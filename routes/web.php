@@ -14,5 +14,40 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('customer/home');
 });
+
+// Route for Customer subdirectory
+Route::prefix('customer')->group(function () {
+    Route::get('/', function () {
+        return view('customer.home');
+    });
+
+
+});
+
+// Route for Driver subdirectory
+Route::prefix('driver')->group(function () {
+    Route::get('/', function () {
+        return view('driver.home');
+    });
+
+});
+
+// Route for Restaurant subdirectory
+Route::prefix('restaurant')->group(function () {
+    Route::get('/', function () {
+        return view('restaurant.home');
+    });
+
+});
+
+// Route for API services
+Route::prefix('api')->group(function () {
+//    Route::get('/', function () {
+//        return view('restaurant.home');
+//    });
+
+
+});
+
