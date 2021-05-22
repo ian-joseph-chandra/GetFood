@@ -20,10 +20,10 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="column-md-3 ml-3">
+                        <div class="ml-3">
                             <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
                         </div>
-                        <div class="columnd-md-9 ml-3">
+                        <div class="ml-3">
                             <p class="card-text">Menu Murah Blablabla</p>
                             <p class="card-text">20000</p>
                         </div>
@@ -31,10 +31,10 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="column-md-3 ml-3">
+                        <div class="ml-3">
                             <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
                         </div>
-                        <div class="columnd-md-9 ml-3">
+                        <div class="ml-3">
                             <p class="card-text">Menu Murah Blablabla</p>
                             <p class="card-text">20000</p>
                         </div>

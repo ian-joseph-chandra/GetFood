@@ -14,7 +14,7 @@
                 </div>
 
                 <form action="" method="post">
-                    {{ csrf_field() }}
+                    @csrf
                     <label for="txtQuantity">Quantity</label> 
                     <br>
                     <input type="number" name="quantity" id="txtQuantity" class="form-control" value="1" >                        

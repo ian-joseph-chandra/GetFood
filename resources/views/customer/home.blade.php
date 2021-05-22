@@ -14,10 +14,10 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">                  
                     <div class="row">
-                        <div class="column-md-4 ml-3">
+                        <div class="ml-3">
                             <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
                         </div>
-                        <div class="columnd-md-8 ml-3">
+                        <div class="ml-3">
                             <h6>Restoran Mahal</h6> 
                             <span class="badge badge-success badge-pill">5 ★</span>
                         </div>
@@ -25,10 +25,10 @@
                 </li>
                 <li class="list-group-item">                  
                     <div class="row">
-                        <div class="column-md-4 ml-3">
+                        <div class="ml-3">
                             <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
                         </div>
-                        <div class="columnd-md-8 ml-3">
+                        <div class="ml-3">
                             <h6>Restoran Mahal</h6> 
                             <span class="badge badge-success badge-pill">5 ★</span>
                         </div>
@@ -36,10 +36,10 @@
                 </li>
                 <li class="list-group-item">                  
                     <div class="row">
-                        <div class="column-md-4 ml-3">
+                        <div class="ml-3">
                             <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
                         </div>
-                        <div class="columnd-md-8 ml-3">
+                        <div class="ml-3">
                             <h6>Restoran Mahal</h6> 
                             <span class="badge badge-success badge-pill">5 ★</span>
                         </div>
@@ -55,10 +55,10 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">                  
                     <div class="row">
-                        <div class="column-md-4 ml-3">
+                        <div class="ml-3">
                             <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
                         </div>
-                        <div class="columnd-md-8 ml-3">
+                        <div class="ml-3">
                             <h6>Restoran Murah</h6> 
                             <span class="badge badge-success badge-pill">5 ★</span>
                         </div>
@@ -66,10 +66,10 @@
                 </li>
                 <li class="list-group-item">                  
                     <div class="row">
-                        <div class="column-md-4 ml-3">
+                        <div class="ml-3">
                             <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
                         </div>
-                        <div class="columnd-md-8 ml-3">
+                        <div class="ml-3">
                             <h6>Restoran Murah</h6> 
                             <span class="badge badge-success badge-pill">5 ★</span>
                         </div>
@@ -77,11 +77,11 @@
                 </li>
                 <li class="list-group-item">                  
                     <div class="row">
-                        <div class="column-md-4 ml-3">
+                        <div class="ml-3">
                             <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
                         </div>
-                        <div class="columnd-md-8 ml-3">
-                            <h6>Restoran Mahal</h6> 
+                        <div class="ml-3">
+                            <h6>Restoran Murah</h6> 
                             <span class="badge badge-success badge-pill">5 ★</span>
                         </div>
                     </div>  
