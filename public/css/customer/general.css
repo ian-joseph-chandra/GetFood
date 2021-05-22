@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(231, 230, 230);
+}
+
+/* Arrow Left & Right */
+.arrow {
+border: solid grey;
+border-width: 0 3px 3px 0;
+display: inline-block;
+padding: 6px;
+}
+
+.right {
+transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+}
+
+.left {
+transform: rotate(135deg);
+-webkit-transform: rotate(135deg);
+}
