@@ -11,10 +11,10 @@
 </head>
 <body>
     <div class="device">
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light mb-3">
             <a class="arrow left" href="#"></a>
             <span class="navbar-brand">Get Food</span>
-          </nav>
+        </nav>
         @yield('content')
     </div>    
 </body>

@@ -19,3 +19,11 @@ transform: rotate(-45deg);
 transform: rotate(135deg);
 -webkit-transform: rotate(135deg);
 }
+
+/* Logo Image */
+
+.logo{
+    width: 70px;
+    height: 70px;
+    margin: 2px;
+}
