@@ -22,6 +22,6 @@
                     <button class="btn btn-success mt-3" type="submit">Add To Cart</button>
                 </form> 
             </div>
-          </div>
+        </div>
     </div>
 @endsection

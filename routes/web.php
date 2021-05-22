@@ -17,6 +17,33 @@ Route::get('/', function () {
     return view('customer/home');
 });
 
+
+//TESTING DUMMY
+Route::get('/restaurant-detail', function () {
+    return view('customer/restaurant-detail');
+});
+
+Route::get('/add-to-basket', function () {
+    return view('customer/add-to-basket');
+});
+
+Route::get('/basket', function () {
+    return view('customer/basket');
+});
+
+Route::get('/wait-order', function () {
+    return view('customer/wait-order');
+});
+
+Route::get('/rating', function () {
+    return view('customer/rating');
+});
+
+Route::get('/register', function () {
+    return view('customer/register');
+});
+
+
 // Route for Customer subdirectory
 Route::prefix('customer')->group(function () {
     Route::get('/', function () {
