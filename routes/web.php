@@ -13,6 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Restaurant
+
+Route::get('/restaurant-register', function () {
+    return view('restaurant/register');
+});
+
+Route::get('/restaurant-login', function () {
+    return view('restaurant/login');
+});
+
+Route::get('/restaurant-home', function () {
+    return view('restaurant/restaurant-home');
+});
+
+Route::get('/restaurant-order', function () {
+    return view('restaurant/order-detail');
+});
+
+Route::get('/restaurant-menu', function () {
+    return view('restaurant/menu');
+});
+
+
 Route::get('/', function () {
     return view('customer/home');
 });
