@@ -17,11 +17,12 @@ class CreateMenusTable extends Migration
             $table->id();
             $table->unsignedBigInteger('restaurant_id');
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
-            $table->unsignedBigInteger('type_id');
-            $table->foreign('type_id')->references('id')->on('menu_types');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('menu_categories');
             $table->string('name');
             $table->text('description')->nullable();
             $table->unsignedInteger('price')->nullable();
+            $table->binary('image')->nullable();
             $table->timestamps();
         });
     }

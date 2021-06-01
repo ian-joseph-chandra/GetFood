@@ -19,7 +19,7 @@ class CreateOrderDetailsTable extends Migration
             $table->foreign('menu_id')->references('id')->on('menus');
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->unsignedTinyInteger('amount');
+            $table->unsignedTinyInteger('quantity');
             $table->timestamps();
         });
     }
