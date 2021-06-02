@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Customer;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,6 +81,9 @@ Route::prefix('restaurant')->group(function () {
 
 // Route for API services
 Route::prefix('api')->group(function () {
-
+    Route::resources([
+        'restaurants' => RestaurantController::class,
+        'branches' => BranchController::class
+    ]);
 });
 
