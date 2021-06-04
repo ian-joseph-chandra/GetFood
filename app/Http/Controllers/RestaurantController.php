@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -10,11 +11,11 @@ class RestaurantController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Collection|Restaurant[]
      */
     public function index()
     {
-        //
+        return Restaurant::all();
     }
 
     /**
@@ -46,7 +47,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+
     }
 
     /**

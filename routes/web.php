@@ -63,9 +63,7 @@ Route::prefix('restaurant')->group(function () {
         return redirect('/restaurant/login');
     });
 
-    Route::get('/home', function () {
-        return view('restaurant.home');
-    });
+    Route::get('/home', [Restaurant\Home::class, 'page']);
 
     Route::get('/register', function () {
         return view('restaurant.register');
