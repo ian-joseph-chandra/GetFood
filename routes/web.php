@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Customer;
+use App\Http\Controllers\Restaurant;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('customer/home');
+    return redirect('/customer/');
 });
 
 // Route for Customer subdirectory
@@ -59,6 +60,10 @@ Route::prefix('driver')->group(function () {
 // Route for Restaurant subdirectory
 Route::prefix('restaurant')->group(function () {
     Route::get('/', function () {
+        return redirect('/restaurant/login');
+    });
+
+    Route::get('/home', function () {
         return view('restaurant.home');
     });
 
@@ -69,6 +74,8 @@ Route::prefix('restaurant')->group(function () {
     Route::get('/login', function () {
         return view('restaurant.login');
     });
+
+    Route::post('/login', [Restaurant\Login::class, 'login']);
 
     Route::get('/orders', function () {
         return view('restaurant.order-detail');
@@ -85,5 +92,7 @@ Route::prefix('api')->group(function () {
         'restaurants' => RestaurantController::class,
         'branches' => BranchController::class
     ]);
+
+    Route::resource('restaurants.branches', BranchController::class)->shallow();
 });
 
