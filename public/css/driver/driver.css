@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(240, 240, 240);
+}
+
+.cardNewOrder {
+    width: 55rem;
+    margin: 0 auto;
+    float: none;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.input-icons i {
+    position: absolute;
+}

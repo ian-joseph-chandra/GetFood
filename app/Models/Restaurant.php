@@ -22,7 +22,7 @@ class Restaurant extends Model
         'email',
         'password',
     ];
-
+    
     public function branch(): HasMany
     {
         return $this->hasMany(Branch::class, 'restaurant_id', 'id');
