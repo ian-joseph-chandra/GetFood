@@ -13,12 +13,12 @@ class Driver extends Model
 
     protected $table = 'drivers';
 
-    public function users(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function order(): HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class, 'driver_id', 'id');
     }

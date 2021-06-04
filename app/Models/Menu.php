@@ -13,22 +13,22 @@ class Menu extends Model
 
     protected $table = 'menus';
 
-    public function restaurants(): BelongsTo
+    public function restaurant(): BelongsTo
     {
         return $this->belongsTo(Restaurant::class, 'restaurant_id');
     }
 
-    public function menu_categories(): BelongsTo
+    public function menu_category(): BelongsTo
     {
         return $this->belongsTo(MenuCategory::class, 'category_id');
     }
 
-    public function stock(): HasMany
+    public function stocks(): HasMany
     {
         return $this->hasMany(Stock::class, 'menu_id', 'id');
     }
 
-    public function order_detail(): HasMany
+    public function order_details(): HasMany
     {
         return $this->hasMany(OrderDetail::class, 'menu_id', 'id');
     }

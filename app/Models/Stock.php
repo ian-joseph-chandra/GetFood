@@ -12,12 +12,12 @@ class Stock extends Model
 
     protected $table = 'stocks';
 
-    public function branches(): BelongsTo
+    public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class, 'branch_id');
     }
 
-    public function menus(): BelongsTo
+    public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class, 'menu_id');
     }

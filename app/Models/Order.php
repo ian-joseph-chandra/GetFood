@@ -13,27 +13,27 @@ class Order extends Model
 
     protected $table = 'orders';
 
-    public function branches(): BelongsTo
+    public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class, 'branch_id');
     }
 
-    public function order_statuses(): BelongsTo
+    public function order_status(): BelongsTo
     {
         return $this->belongsTo(OrderStatus::class, 'order_status_id');
     }
 
-    public function customers(): BelongsTo
+    public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'customer_id');
     }
 
-    public function drivers(): BelongsTo
+    public function driver(): BelongsTo
     {
         return $this->belongsTo(Driver::class, 'driver_id');
     }
 
-    public function order_detail(): HasMany
+    public function order_details(): HasMany
     {
         return $this->hasMany(Order::class, 'order_id', 'id');
     }

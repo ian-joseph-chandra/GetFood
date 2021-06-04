@@ -13,12 +13,12 @@ class Customer extends Model
 
     protected $table = 'customers';
 
-    public function users(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function order(): HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class, 'customer_id', 'id');
     }

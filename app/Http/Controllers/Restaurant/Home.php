@@ -9,14 +9,11 @@ use Illuminate\Http\Request;
 
 class Home extends Controller
 {
-    public function page(){
-        $restaurant = new Restaurant([
-            'email' => 'resto@kfc.com'
-        ]);
-
-        $restaurants = (new RestaurantController)->index();
-
-//        return view('restaurant.home');
-        return $restaurant;
+    public function page()
+    {
+        $restaurant = Restaurant::with('branches')->find(1);
+        $branch_rating = $restaurant->branches[0]->rating_average;
+        return view('restaurant.home', compact('restaurant', 'branch_rating'));
+//        return $restaurant;
     }
 }

@@ -64,6 +64,9 @@ Route::prefix('restaurant')->group(function () {
     });
 
     Route::get('/home', [Restaurant\Home::class, 'page']);
+//    Route::get('/home', function(){
+//        return view('restaurant.home');
+//    });
 
     Route::get('/register', function () {
         return view('restaurant.register');
@@ -79,7 +82,7 @@ Route::prefix('restaurant')->group(function () {
         return view('restaurant.order-detail');
     });
 
-    Route::get('/menus', function () {
+    Route::get('/menu', function () {
         return view('restaurant.menu');
     });
 });
