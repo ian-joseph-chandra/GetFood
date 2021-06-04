@@ -13,17 +13,17 @@ class Branch extends Model
 
     protected $table = 'branches';
 
-    public function restaurants(): BelongsTo
+    public function restaurant(): BelongsTo
     {
         return $this->belongsTo(Restaurant::class, 'restaurant_id');
     }
 
-    public function stock(): HasMany
+    public function stocks(): HasMany
     {
         return $this->hasMany(Stock::class, 'branch_id', 'id');
     }
 
-    public function order(): HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class, 'branch_id', 'id');
     }

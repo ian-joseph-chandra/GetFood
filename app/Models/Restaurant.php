@@ -28,7 +28,7 @@ class Restaurant extends Model
         return $this->hasMany(Branch::class, 'restaurant_id', 'id');
     }
 
-    public function menu(): HasMany
+    public function menus(): HasMany
     {
         return $this->hasMany(Menu::class, 'restaurant_id', 'id');
     }

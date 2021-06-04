@@ -12,7 +12,7 @@ class MenuCategory extends Model
 
     protected $table = 'menu_categories';
 
-    public function menu(): HasMany
+    public function menus(): HasMany
     {
         return $this->hasMany(Menu::class, 'category_id', 'id');
     }
