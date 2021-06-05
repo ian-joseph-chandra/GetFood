@@ -35,7 +35,7 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Menu</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Sub-total Price</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,22 +58,21 @@
                 </tbody>
             </table>
         </div>
-
-        <div class="row">
-            <div class="col-9">
-                <p class="h4 float-right">Total</p>
-            </div>
-
-            <div class="col-2 ml-2">
-                <p class="float-center ml-4">50,00</p>
-            </div>
-        </div>
-
     </div>
 
-    <form class="col text-center mb-3" action="" method="post">
+    <div class="row mt-2">
+        <div class="col-7">
+            <p class="h4 float-right">Total</p>
+        </div>
+
+        <div class="col-2 text-center">
+            <p class="float-center ml-1">50,00</p>
+        </div>
+    </div>
+
+    <form class="col text-center mb-3 mt-5" action="" method="post">
         @csrf
-        <button class="btn btn-info mt-3" type="submit">Add Category</button>
+        <button class="btn btn-info mt-3" type="submit">Process Order</button>
     </form>
 
     <div class="col text-center ">

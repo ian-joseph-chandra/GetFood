@@ -90,7 +90,11 @@
                 </div>
             </div>
 
-            <div class="text-center mt-4 mb-3 ">
+            <form class="col text-center mb-3 mt-3" action="" method="post">
+                <button class="btn btn-warning mt-3" type="submit">Arrived</button>
+            </form>
+
+            <div class="text-center mt-4 mb-3">
                 <span class="p-2 border border-warning bg-white rounded">#61748174</span>
             </div>
         </div>

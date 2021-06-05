@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-5">
+                            <div class="col-md-12 text-center">
                                 <button class="btn btn-info mt-3" type="submit">Submit</button>
                             </div>
                         </div>
