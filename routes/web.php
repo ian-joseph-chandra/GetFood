@@ -87,6 +87,14 @@ Route::prefix('restaurant')->group(function () {
     Route::get('/menu', function () {
         return view('restaurant.menu');
     });
+
+    Route::get('/branch', function () {
+        return view('restaurant.new-branch');
+    });
+
+    Route::get('/new-menu', function () {
+        return view('restaurant.new-menu');
+    });
 });
 
 // Route for API services
