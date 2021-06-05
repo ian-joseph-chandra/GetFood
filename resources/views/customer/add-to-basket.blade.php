@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="card">
-            <img class="card-img-top" src="{{ URL::asset('images/logo-restaurant.jpg') }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset('images/logo-restaurant.jpg') }}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">Menu Murah Blablabla</h5>
                 <p class="card-text">Deskripsi Menu</p>
@@ -15,12 +15,12 @@
 
                 <form action="" method="post">
                     @csrf
-                    <label for="txtQuantity">Quantity</label> 
+                    <label for="txtQuantity">Quantity</label>
                     <br>
-                    <input type="number" name="quantity" id="txtQuantity" class="form-control" value="1" >                        
+                    <input type="number" name="quantity" id="txtQuantity" class="form-control" value="1" >
                     <br>
                     <button class="btn btn-success mt-3" type="submit">Add To Cart</button>
-                </form> 
+                </form>
             </div>
         </div>
     </div>

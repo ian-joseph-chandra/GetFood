@@ -3,10 +3,10 @@
 @section('content')
     <div class="container-fluid">
         <div class="card">
-            <img class="card-img-top" src="{{ URL::asset('images/logo-restaurant.jpg') }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset('images/logo-restaurant.jpg') }}" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Restoran Mahal</h5>
-                <span class="badge badge-success badge-pill">5 ★</span>
+                <h5 class="card-title">{{$branch->restaurant->name}} {{$branch->location}}</h5>
+                <span class="badge badge-success badge-pill">{{$branch->rating_average}} ★</span>
                 <span>| See Details</span>
                 <hr>
                 <p class="card-text">Info Jarak & Harga Pengiriman</p>
@@ -21,27 +21,26 @@
                 <li class="list-group-item">
                     <div class="row">
                         <div class="ml-3">
-                            <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
+                            <img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo">
                         </div>
                         <div class="ml-3">
                             <p class="card-text">Menu Murah Blablabla</p>
                             <p class="card-text">20000</p>
                         </div>
-                    </div>                                  
+                    </div>
                 </li>
                 <li class="list-group-item">
                     <div class="row">
                         <div class="ml-3">
-                            <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
+                            <img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo">
                         </div>
                         <div class="ml-3">
                             <p class="card-text">Menu Murah Blablabla</p>
                             <p class="card-text">20000</p>
                         </div>
-                    </div>                                  
+                    </div>
                 </li>
             </ul>
         </div>
-
     </div>
 @endsection

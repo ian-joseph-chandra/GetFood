@@ -14,7 +14,7 @@
                 Your Driver
             </div>
             <div class="card-body text-center">
-                <img src="{{ URL::asset('images/profile.png') }}"> 
+                <img src="{{ asset('images/profile.png') }}">
                 <h5 class="card-title mt-3">Robin Daniel</h5>
                 <h2>★★★★★</h2>
                 <hr>
@@ -43,6 +43,6 @@
         <form action="" method="post">
             @csrf
             <button class="btn btn-success mt-3 w-100 mb-3" type="submit">Submit</button>
-        </form> 
-    </div>    
+        </form>
+    </div>
 @endsection

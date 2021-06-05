@@ -6,88 +6,48 @@
             <input class="form-control me-2" type="search" placeholder="What are you craving?" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        
+
         <div class="card mt-3">
-            <div class="card-header">
-                Recommended For You
-            </div>
+            <div class="card-header">Recommended For You</div>
+
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">                  
-                    <div class="row">
-                        <div class="ml-3">
-                            <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
+                @foreach($top_recommendations as $branch)
+                    <li class="list-group-item" style="cursor: pointer"
+                        onclick="window.location='/customer/restaurants/{{$branch->restaurant_id}}/{{$branch->id}}'">
+                        <div class="row">
+                            <div class="ml-3">
+                                <img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo">
+                            </div>
+                            <div class="ml-3">
+                                <h6>{{$branch->restaurant->name}} {{$branch->location}}</h6>
+                                <span class="badge badge-success badge-pill">{{$branch->rating_average}} ★</span>
+                            </div>
                         </div>
-                        <div class="ml-3">
-                            <h6>Restoran Mahal</h6> 
-                            <span class="badge badge-success badge-pill">5 ★</span>
-                        </div>
-                    </div>  
-                </li>
-                <li class="list-group-item">                  
-                    <div class="row">
-                        <div class="ml-3">
-                            <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
-                        </div>
-                        <div class="ml-3">
-                            <h6>Restoran Mahal</h6> 
-                            <span class="badge badge-success badge-pill">5 ★</span>
-                        </div>
-                    </div>  
-                </li>
-                <li class="list-group-item">                  
-                    <div class="row">
-                        <div class="ml-3">
-                            <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
-                        </div>
-                        <div class="ml-3">
-                            <h6>Restoran Mahal</h6> 
-                            <span class="badge badge-success badge-pill">5 ★</span>
-                        </div>
-                    </div>  
-                </li>
+                    </li>
+                @endforeach()
             </ul>
         </div>
 
         <div class="card mt-3 mb-3">
-            <div class="card-header">
-                More Restaurants
-            </div>
+            <div class="card-header">More Restaurants</div>
+
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">                  
-                    <div class="row">
-                        <div class="ml-3">
-                            <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
+                @foreach($more_recommendations as $branch)
+                    <li class="list-group-item" style="cursor: pointer"
+                        onclick="window.location = '/customer/restaurants/' + {{$branch->id}}">
+                        <div class="row">
+                            <div class="ml-3">
+                                <img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo">
+                            </div>
+
+                            <div class="ml-3">
+                                <h6>{{$branch->restaurant->name}} {{$branch->location}}</h6>
+                                <span class="badge badge-success badge-pill">{{$branch->rating_average}} ★</span>
+                            </div>
                         </div>
-                        <div class="ml-3">
-                            <h6>Restoran Murah</h6> 
-                            <span class="badge badge-success badge-pill">5 ★</span>
-                        </div>
-                    </div>  
-                </li>
-                <li class="list-group-item">                  
-                    <div class="row">
-                        <div class="ml-3">
-                            <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
-                        </div>
-                        <div class="ml-3">
-                            <h6>Restoran Murah</h6> 
-                            <span class="badge badge-success badge-pill">5 ★</span>
-                        </div>
-                    </div>  
-                </li>
-                <li class="list-group-item">                  
-                    <div class="row">
-                        <div class="ml-3">
-                            <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo"> 
-                        </div>
-                        <div class="ml-3">
-                            <h6>Restoran Murah</h6> 
-                            <span class="badge badge-success badge-pill">5 ★</span>
-                        </div>
-                    </div>  
-                </li>
+                    </li>
+                @endforeach()
             </ul>
         </div>
-        
     </div>
 @endsection

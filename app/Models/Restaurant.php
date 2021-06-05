@@ -22,8 +22,8 @@ class Restaurant extends Model
         'email',
         'password',
     ];
-    
-    public function branch(): HasMany
+
+    public function branches(): HasMany
     {
         return $this->hasMany(Branch::class, 'restaurant_id', 'id');
     }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RestaurantController extends Controller
 {
@@ -21,7 +23,7 @@ class RestaurantController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -32,7 +34,7 @@ class RestaurantController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -42,19 +44,19 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
+     * @param Restaurant $restaurant
+     * @return Builder[]|Collection
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return Restaurant::with('branches')->findOrFail($restaurant->id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
+     * @param Restaurant $restaurant
+     * @return Response
      */
     public function edit(Restaurant $restaurant)
     {
@@ -65,8 +67,8 @@ class RestaurantController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
+     * @param Restaurant $restaurant
+     * @return Response
      */
     public function update(Request $request, Restaurant $restaurant)
     {
@@ -76,8 +78,8 @@ class RestaurantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Restaurant  $restaurant
-     * @return \Illuminate\Http\Response
+     * @param Restaurant $restaurant
+     * @return Response
      */
     public function destroy(Restaurant $restaurant)
     {

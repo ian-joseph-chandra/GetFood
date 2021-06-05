@@ -1,4 +1,4 @@
-@extends('restaurant.layouts.headerRestaurant')
+@extends('restaurant.layouts.header-restaurant')
 
 @section('content')
 <div class="container-fluid">
@@ -43,7 +43,7 @@
                         <td>1</td>
                         <td class="row">
                             <div class="col-2">
-                                <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo">
+                                <img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo">
                             </div>
 
                             <div class="col-3">

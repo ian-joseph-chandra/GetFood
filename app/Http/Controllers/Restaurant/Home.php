@@ -14,6 +14,5 @@ class Home extends Controller
         $restaurant = Restaurant::with('branches')->find(1);
         $branch_rating = $restaurant->branches[0]->rating_average;
         return view('restaurant.home', compact('restaurant', 'branch_rating'));
-//        return $restaurant;
     }
 }

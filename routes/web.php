@@ -22,11 +22,13 @@ Route::get('/', function () {
 
 // Route for Customer subdirectory
 Route::prefix('customer')->group(function () {
-    Route::get('/', [Customer\Home::class, 'page']);
-
-    Route::get('/restaurant-detail', function () {
-        return view('customer.restaurant-detail');
+    Route::get('/', function () {
+        return redirect('/restaurant/home');
     });
+
+    Route::get('/home', [Customer\Home::class, 'page']);
+
+    Route::get('/restaurants/{branch}', [Customer\Restaurant::class, 'page']);
 
     Route::get('/add-to-basket', function () {
         return view('customer.add-to-basket');
@@ -52,8 +54,13 @@ Route::prefix('customer')->group(function () {
 // Route for Driver subdirectory
 Route::prefix('driver')->group(function () {
     Route::get('/', function () {
+        return redirect('/driver/home');
+    });
+
+    Route::get('/home', function(){
         return view('driver.home');
     });
+
     Route::get('/order', function () {
         return view('driver.detail-order');
     });
@@ -66,9 +73,6 @@ Route::prefix('restaurant')->group(function () {
     });
 
     Route::get('/home', [Restaurant\Home::class, 'page']);
-//    Route::get('/home', function(){
-//        return view('restaurant.home');
-//    });
 
     Route::get('/register', function () {
         return view('restaurant.register');
@@ -88,12 +92,12 @@ Route::prefix('restaurant')->group(function () {
         return view('restaurant.menu');
     });
 
-    Route::get('/branch', function () {
-        return view('restaurant.new-branch');
+    Route::get('/add-branch', function () {
+        return view('restaurant.add-branch');
     });
 
-    Route::get('/new-menu', function () {
-        return view('restaurant.new-menu');
+    Route::get('/add-menu', function () {
+        return view('restaurant.add-menu');
     });
 
     Route::get('/history', function () {
@@ -109,5 +113,6 @@ Route::prefix('api')->group(function () {
     ]);
 
     Route::resource('restaurants.branches', BranchController::class)->shallow();
+    Route::resource('branches.restaurants', RestaurantController::class)->shallow();
 });
 

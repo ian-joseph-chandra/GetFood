@@ -1,4 +1,4 @@
-@extends('restaurant.layouts.headerRestaurant')
+@extends('restaurant.layouts.header-restaurant')
 
 @section('content')
 <div class="container-fluid">

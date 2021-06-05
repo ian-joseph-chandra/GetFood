@@ -1,4 +1,4 @@
-@extends('restaurant.layouts.headerRestaurant')
+@extends('restaurant.layouts.header-restaurant')
 
 @section('content')
     <div class="container-fluid">
@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-1">
-                        <img src="{{ URL::asset('images/logo-restaurant.jpg') }}" class="logo rounded-circle">
+                        <img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo rounded-circle">
                     </div>
 
                     <div class="col-8">
@@ -31,7 +31,9 @@
                     </div>
 
                     <div class="col-3">
-                        <button type="button" class="btn btn-info btn-md float-right">+ Branch</button>
+                        <button type="button" class="btn btn-info btn-md float-right"
+                                onclick="window.location='/restaurant/add-branch'">+ Branch
+                        </button>
                     </div>
                 </div>
             </div>
@@ -46,20 +48,22 @@
             </div>
 
             <div class="card-body">
-                <div class="row" style="cursor: pointer">
+                <div class="row" style="cursor: pointer" onclick="window.location='/restaurant/orders'">
                     <div class="col-4">
-                        <span><img src="{{ URL::asset('images/user.png') }}"></span>
+                        <span><img src="{{ asset('images/user.png') }}"></span>
                         <span class="card-text">Bambeng</span>
                         <span class="badge badge-success badge-pill">5 ★</span>
-
                     </div>
+
                     <div class="col-4">
-                        <span><img src="{{ URL::asset('images/delivery.png') }}"></span>
+                        <span><img src="{{ asset('images/delivery.png') }}"></span>
                         <span class="card-text">Twinkie</span>
                     </div>
+
                     <div class="col-2">
                         <span class="h6 align-middle">Picked Up</span>
                     </div>
+
                     <div class="col-2">
                         <a class="float-right">
                             <i class="fa fa-lg fa-chevron-right"></i>

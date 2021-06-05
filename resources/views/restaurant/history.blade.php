@@ -1,4 +1,4 @@
-@extends('restaurant.layouts.headerRestaurant')
+@extends('restaurant.layouts.header-restaurant')
 
 @section('content')
 <div class="container-fluid">
@@ -11,20 +11,22 @@
         </div>
 
         <div class="card-body">
-            <div class="row" style="cursor: pointer">
+            <div class="row" style="cursor: pointer" onclick="window.location='/restaurant/orders'">
                 <div class="col-4">
-                    <span><img src="{{ URL::asset('images/user.png') }}"></span>
+                    <span><img src="{{ asset('images/user.png') }}"></span>
                     <span class="card-text">Bambeng</span>
                     <span class="badge badge-success badge-pill">5 ★</span>
-
                 </div>
+
                 <div class="col-4">
-                    <span><img src="{{ URL::asset('images/delivery.png') }}"></span>
+                    <span><img src="{{ asset('images/delivery.png') }}"></span>
                     <span class="card-text">Twinkie</span>
                 </div>
+
                 <div class="col-2">
                     <span class="h6 align-middle">Finish</span>
                 </div>
+
                 <div class="col-2">
                     <a class="float-right">
                         <i class="fa fa-lg fa-chevron-right text-info"></i>
