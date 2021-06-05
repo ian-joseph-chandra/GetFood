@@ -43,7 +43,7 @@
                     <button type="button" class="btn btn-warning btn-md float-right text-white">History</button>
                 </div>
             </div>
-            <div class="card mt-3">
+            <div class="card mt-3 mb-3">
                 <div class="card-body">
                     <h5 class="text-center">Waiting for Order...</h5>
                 </div>
@@ -56,8 +56,50 @@
                         <p class="card-text"><strong>Restoran Mahal</strong></p>
 
                         <div class="input-icons mt-2">
-                            <span class="text-info fa fa-map-marker" aria-hidden="true" style="font-size: 1.5rem;"></span>
+                            <span class="text-warning fa fa-map-marker" aria-hidden="true" style="font-size: 1.5rem;"></span>
                             <span p class="card-text">Wonderland</span>
+                        </div>
+
+                        <p class="h5 mt-5">Customer</p>
+                        <hr>
+                        <p class="card-text"><strong>Bambeng</strong></p>
+
+                        <div class="input-icons mt-2">
+                            <span class="text-warning fa fa-map-marker" aria-hidden="true" style="font-size: 1.5rem;"></span>
+                            <span p class="card-text">Glodok</span>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <button type="button" class="btn btn-warning mr-2">Accept</button>
+                            <button type="button" class="btn btn-danger ml-2">Reject</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card cardNewOrder shadow-sm mb-3 w-75">
+                    <div class="card-body">
+                        <div class="col-6 p-2 mb-2 border-warning border bg-light text-dark rounded text-center h6">#678910</div>
+                        <p class="h5 mt-3">Restaurant</p>
+                        <hr>
+                        <p class="card-text"><strong>Restoran Murah</strong></p>
+
+                        <div class="input-icons mt-2">
+                            <span class="text-warning fa fa-map-marker" aria-hidden="true" style="font-size: 1.5rem;"></span>
+                            <span p class="card-text">Tomorrowland</span>
+                        </div>
+
+                        <p class="h5 mt-5">Customer</p>
+                        <hr>
+                        <p class="card-text"><strong>Ranto</strong></p>
+
+                        <div class="input-icons mt-2">
+                            <span class="text-warning fa fa-map-marker" aria-hidden="true" style="font-size: 1.5rem;"></span>
+                            <span p class="card-text">Hayam Wuruk</span>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <button type="button" class="btn btn-warning mr-2">Accept</button>
+                            <button type="button" class="btn btn-danger ml-2">Reject</button>
                         </div>
                     </div>
                 </div>

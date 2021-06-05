@@ -17,3 +17,9 @@ body {
 .input-icons i {
     position: absolute;
 }
+
+.logo {
+    width: 70px;
+    height: 70px;
+    margin: 2px;
+}

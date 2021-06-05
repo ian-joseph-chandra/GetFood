@@ -54,7 +54,9 @@ Route::prefix('driver')->group(function () {
     Route::get('/', function () {
         return view('driver.home');
     });
-
+    Route::get('/order', function () {
+        return view('driver.detail-order');
+    });
 });
 
 // Route for Restaurant subdirectory

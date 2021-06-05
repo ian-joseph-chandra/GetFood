@@ -77,7 +77,7 @@
     </form>
 
     <div class="col text-center ">
-        <span class="border border-info bg-white rounded">#61748174</span>
+        <span class="p-2 border border-info bg-white rounded">#61748174</span>
     </div>
 
     <form class="col text-center mb-3" action="" method="post">
