@@ -95,6 +95,10 @@ Route::prefix('restaurant')->group(function () {
     Route::get('/new-menu', function () {
         return view('restaurant.new-menu');
     });
+
+    Route::get('/history', function () {
+        return view('restaurant.history');
+    });
 });
 
 // Route for API services
