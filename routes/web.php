@@ -103,6 +103,10 @@ Route::prefix('restaurant')->group(function () {
     Route::get('/history', function () {
         return view('restaurant.history');
     });
+
+    Route::get('/categories', function () {
+        return view('restaurant.add-category');
+    });
 });
 
 // Route for API services

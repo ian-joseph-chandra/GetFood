@@ -6,7 +6,7 @@
         <div class="card mt-3">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-3 mt-1">
+                    <div class="col-2 mt-1">
                         <p class="h5">Restoran Mahal</p>
                     </div>
                     <div class="col-md-3 mt-1">
@@ -17,7 +17,12 @@
                             <option>Beverages</option>
                         </select>
                     </div>
-                    <div class="col-6">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-info btn-md float-right"
+                                onclick="window.location='/restaurant/add-category'">+ New Category
+                        </button>
+                    </div>
+                    <div class="col-2">
                         <button type="button" class="btn btn-info btn-md float-right"
                                 onclick="window.location='/restaurant/add-menu'">+ New Menu
                         </button>
