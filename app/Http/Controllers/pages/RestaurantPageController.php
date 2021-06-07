@@ -10,6 +10,7 @@ use App\Models\MenuCategory;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isEmpty;
 
 class RestaurantPageController extends Controller
 {
@@ -30,13 +31,22 @@ class RestaurantPageController extends Controller
     public function menus(Restaurant $restaurant, MenuCategory $menu_category)
     {
         $menu_categories = $restaurant->menu_categories()->get();
+        $selected = null;
+        $menus = $restaurant->menus()->with('menu_category')->get();
 
-        if ($menu_category != null) {
-            $menus = $restaurant->menus()->with('menu_category')->get();
-        } else
-            $menus = $restaurant->menu_categories()->findOrFail($menu_category->id)->menus()->get();
+        return view('restaurant.menus', compact('restaurant', 'menu_categories', 'menus', 'selected'));
+//        return (compact('menu_category', 'menus', 'selected'));
+    }
 
-        return view('restaurant.menus', compact('restaurant', 'menu_categories', 'menus'));
+    public function menus_by_category(Restaurant $restaurant, MenuCategory $menu_category)
+    {
+        $menu_categories = $restaurant->menu_categories()->get();
+        $selected = $menu_category->id;
+
+        $menus = $menu_category->menus()->get();
+
+        return view('restaurant.menus', compact('restaurant', 'menu_categories', 'menus', 'selected'));
+//        return (compact('menu_category', 'menu_categories', 'menus', 'selected'));
     }
 
     public function add_branch(Restaurant $restaurant)

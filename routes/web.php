@@ -99,6 +99,8 @@ Route::prefix('restaurant')->group(function () {
         return view('restaurant.order-detail');
     });
 
+    Route::get('/{restaurant}/categories/{menu_category}/menus', [RestaurantPageController::class, 'menus_by_category']);
+
     Route::get('/{restaurant}/menus', [RestaurantPageController::class, 'menus']);
 
     Route::get('/{restaurant}/add-menu', [RestaurantPageController::class, 'add_menu']);
@@ -106,7 +108,7 @@ Route::prefix('restaurant')->group(function () {
     Route::get('/{restaurant}/menu-categories', [RestaurantPageController::class, 'menu_categories']);
 
     Route::get('/{restaurant}/add-menu-category', [RestaurantPageController::class, 'add_menu_category']);
-    
+
     Route::get('/{restaurant}/add-branch', [RestaurantPageController::class, 'add_branch']);
 
 

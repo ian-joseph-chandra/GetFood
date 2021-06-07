@@ -11,10 +11,19 @@
 
                     <div class="col-md-3 mt-1">
                         <select placeholder="Select Category" class="form-control" name="category_id"
-                                id="categorySelection">
-                            <option value="">All menus</option>
+                                id="category_id">
+                            @if($selected == null)
+                                <option value="" selected>All menus</option>
+                            @else
+                                <option value="">All menus</option>
+                            @endif
+
                             @foreach($menu_categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @if($selected == $category->id)
+                                        <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                                    @else
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endif
                             @endforeach
                         </select>
                     </div>
@@ -67,6 +76,10 @@
     </div>
 
     <script>
-        
+        document.getElementById('category_id').addEventListener('change', function () {
+            window.location = document.getElementById('category_id').value === '' ?
+                '/restaurant/{{$restaurant->id}}/menus' :
+                '/restaurant/{{$restaurant->id}}/categories/' + document.getElementById('category_id').value + '/menus';
+        })
     </script>
 @endsection
