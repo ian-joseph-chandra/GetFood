@@ -11,7 +11,7 @@
         <div class="card-header">Recommended For You</div>
 
         <ul class="list-group list-group-flush">
-            @foreach($top_recommendations as $branch)
+            @foreach($recommendations[0] as $branch)
             <li class="list-group-item" style="cursor: pointer" onclick="window.location='/customer/restaurants/{{$branch->restaurant_id}}/{{$branch->id}}'">
                 <div class="row">
                     <div class="ml-3">
@@ -31,7 +31,7 @@
         <div class="card-header">More Restaurants</div>
 
         <ul class="list-group list-group-flush">
-            @foreach($more_recommendations as $branch)
+            @foreach($recommendations[1] as $branch)
             <li class="list-group-item" style="cursor: pointer" onclick="window.location = '/customer/restaurants/' + {{$branch->id}}">
                 <div class="row">
                     <div class="ml-3">

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return redirect('/restaurant/');
+    return redirect('/customer/');
 });
 
 // Route for Customer subdirectory
@@ -78,7 +78,7 @@ Route::prefix('driver')->group(function () {
 });
 
 // Route for Restaurant subdirectory
-Route::prefix('restaurant')->group(function () {
+Route::prefix('restaurant/{restaurant}')->group(function () {
     Route::get('/', function () {
         return redirect('/restaurant/home/1');
     });
@@ -95,22 +95,21 @@ Route::prefix('restaurant')->group(function () {
 
     Route::post('/login', [RestaurantPageController::class, 'login']);
 
-    Route::get('/{restaurant}/orders', function () {
+    Route::get('/orders', function () {
         return view('restaurant.order-detail');
     });
 
-    Route::get('/{restaurant}/categories/{menu_category}/menus', [RestaurantPageController::class, 'menus_by_category']);
+    Route::get('/categories/{menu_category}/menus', [RestaurantPageController::class, 'menus_by_category']);
 
-    Route::get('/{restaurant}/menus', [RestaurantPageController::class, 'menus']);
+    Route::get('/menus', [RestaurantPageController::class, 'menus']);
 
-    Route::get('/{restaurant}/add-menu', [RestaurantPageController::class, 'add_menu']);
+    Route::get('/add-menu', [RestaurantPageController::class, 'add_menu']);
 
-    Route::get('/{restaurant}/menu-categories', [RestaurantPageController::class, 'menu_categories']);
+    Route::get('/menu-categories', [RestaurantPageController::class, 'menu_categories']);
 
-    Route::get('/{restaurant}/add-menu-category', [RestaurantPageController::class, 'add_menu_category']);
+    Route::get('/add-menu-category', [RestaurantPageController::class, 'add_menu_category']);
 
-    Route::get('/{restaurant}/add-branch', [RestaurantPageController::class, 'add_branch']);
-
+    Route::get('/add-branch', [RestaurantPageController::class, 'add_branch']);
 
     Route::get('/history', function () {
         return view('restaurant.history');

@@ -21,8 +21,8 @@ class CustomerPageController extends Controller
         for ($i = 4; $i < 8; $i++)
             array_push($recommendations[1], $branches[$i]);
 
-//        return view('customer.home', compact('recommendations'));
-        return compact('recommendations');
+        return view('customer.home', compact('recommendations'));
+//        return compact('recommendations');
     }
 
     public function restaurant(Branch $branch)
