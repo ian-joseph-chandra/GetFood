@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Restaurant;
+namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RestaurantController;
@@ -8,15 +8,29 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Login extends Controller
+class RestaurantPageController extends Controller
 {
-
-    public function getLogin(Request $request)
+    public function home(Restaurant $restaurant)
     {
-        return view('login');
+        $restaurant = (new RestaurantController)->show($restaurant);
+
+        //        $restaurant = Restaurant::with('branches')->find(1);
+
+        return view('restaurant.home', compact('restaurant'));
+//        return compact('restaurant');
     }
 
-    public function login(Request $request){
+    public function add_branch(Restaurant $restaurant)
+    {
+        return view('restaurant.add-branch', compact('restaurant'));
+    }
+
+    public function add_menu_category(Restaurant $restaurant)
+    {
+    }
+
+    public function login(Request $request)
+    {
         $request->validate([
             'email' => 'email|required|string',
             'password' => 'required',

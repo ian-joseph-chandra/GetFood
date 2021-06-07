@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\BranchController;
-use App\Http\Controllers\Customer;
-use App\Http\Controllers\Restaurant;
+use App\Http\Controllers\pages\CustomerPageController;
+use App\Http\Controllers\pages\RestaurantPageController;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,18 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return redirect('/customer/');
+    return redirect('/restaurant/');
 });
 
 // Route for Customer subdirectory
 Route::prefix('customer')->group(function () {
     Route::get('/', function () {
-        return redirect('/restaurant/home');
+        return redirect('/customer/home');
     });
 
-    Route::get('/home', [Customer\Home::class, 'page']);
+    Route::get('/home', [CustomerPageController::class, 'home']);
 
-    Route::get('/restaurants/{branch}', [Customer\Restaurant::class, 'page']);
+    Route::get('/restaurants/{branch}', [CustomerPageController::class, 'restaurant']);
 
     Route::get('/add-to-basket', function () {
         return view('customer.add-to-basket');
@@ -57,7 +57,7 @@ Route::prefix('driver')->group(function () {
         return redirect('/driver/home');
     });
 
-    Route::get('/home', function(){
+    Route::get('/home', function () {
         return view('driver.home');
     });
 
@@ -69,10 +69,10 @@ Route::prefix('driver')->group(function () {
 // Route for Restaurant subdirectory
 Route::prefix('restaurant')->group(function () {
     Route::get('/', function () {
-        return redirect('/restaurant/login');
+        return redirect('/restaurant/home/1');
     });
 
-    Route::get('/home', [Restaurant\Home::class, 'page']);
+    Route::get('/home/{restaurant}', [RestaurantPageController::class, 'home']);
 
     Route::get('/register', function () {
         return view('restaurant.register');
@@ -82,7 +82,7 @@ Route::prefix('restaurant')->group(function () {
         return view('restaurant.login');
     });
 
-    Route::post('/login', [Restaurant\Login::class, 'login']);
+    Route::post('/login', [RestaurantPageController::class, 'login']);
 
     Route::get('/orders', function () {
         return view('restaurant.order-detail');
@@ -92,13 +92,14 @@ Route::prefix('restaurant')->group(function () {
         return view('restaurant.menu');
     });
 
-    Route::get('/add-branch', function () {
-        return view('restaurant.add-branch');
-    });
-
     Route::get('/add-menu', function () {
         return view('restaurant.add-menu');
     });
+
+    Route::get('/{restaurant}/add-menu-category', [RestaurantPageController::class, 'add_menu_category']);
+
+    Route::get('/{restaurant}/add-branch', [RestaurantPageController::class, 'add_branch']);
+
 
     Route::get('/history', function () {
         return view('restaurant.history');

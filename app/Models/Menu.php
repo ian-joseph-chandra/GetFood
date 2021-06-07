@@ -13,10 +13,14 @@ class Menu extends Model
 
     protected $table = 'menus';
 
-    public function restaurant(): BelongsTo
-    {
-        return $this->belongsTo(Restaurant::class, 'restaurant_id');
-    }
+    protected $fillable = [
+        'restaurant_id',
+        'category_id',
+        'name',
+        'description',
+        'price',
+        'image'
+    ];
 
     public function menu_category(): BelongsTo
     {

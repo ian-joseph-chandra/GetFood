@@ -53,5 +53,4 @@ class User extends Authenticatable
     {
         return $this->hasOne(Driver::class, 'user_id', 'id');
     }
-
 }

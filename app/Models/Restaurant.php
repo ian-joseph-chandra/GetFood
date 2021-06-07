@@ -21,6 +21,8 @@ class Restaurant extends Model
         'name',
         'email',
         'password',
+        'image',
+        'image_type'
     ];
 
     public function branches(): HasMany
@@ -28,7 +30,7 @@ class Restaurant extends Model
         return $this->hasMany(Branch::class, 'restaurant_id', 'id');
     }
 
-    public function menus(): HasMany
+    public function menu_categories(): HasMany
     {
         return $this->hasMany(Menu::class, 'restaurant_id', 'id');
     }

@@ -13,6 +13,13 @@ class Branch extends Model
 
     protected $table = 'branches';
 
+    protected $fillable = [
+        'restaurant_id',
+        'location',
+        'rating_average',
+        'rating_quantity'
+    ];
+
     public function restaurant(): BelongsTo
     {
         return $this->belongsTo(Restaurant::class, 'restaurant_id');

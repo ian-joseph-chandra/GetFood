@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Restaurant;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class BranchController extends Controller
 {
@@ -35,11 +39,17 @@ class BranchController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return Application|RedirectResponse|Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request, Restaurant $restaurant)
     {
-        //
+        $branch = new Branch([
+            'restaurant_id' => $restaurant->id,
+            'location' => $request->location
+        ]);
+        $branch->save();
+
+        return redirect('/restaurant/home/'.$restaurant->id)->with('flash_message_success', 'Successfully created a new branch!');
     }
 
     /**
@@ -96,6 +106,17 @@ class BranchController extends Controller
      */
     public function order_by_rating()
     {
-        return Branch::with('restaurant')->orderBy('rating_average', 'desc')->take(8)->get();
+        $branches = Branch::with('restaurant')->orderBy('rating_average', 'desc')->take(8)->get();
+
+        foreach ($branches as $branch) {
+            if($branch->restaurant->image != null) {
+                $image = $branch->restaurant->image;
+                $response = Response::make($image->encode($branch->restaurant->image_type));
+                $response->header('Content-Type', 'image/' . $branch->restaurant->image_type);
+                $branch->restaurant->image = $response;
+            }
+        }
+
+        return $branches;
     }
 }

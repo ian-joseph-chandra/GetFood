@@ -33,7 +33,7 @@ class RestaurantController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -49,7 +49,14 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        return Restaurant::with('branches')->findOrFail($restaurant->id);
+        $restaurant = Restaurant::with('branches')->findOrFail($restaurant->id);
+//
+//        $image = $restaurant->image;
+//        $response = Response::make($image->encode('png'));
+//        $response->header('Content-Type', 'image/'.$restaurant->image_type);
+//
+//        $restaurant->image = $response;
+        return $restaurant;
     }
 
     /**
@@ -66,7 +73,7 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param Restaurant $restaurant
      * @return Response
      */
@@ -84,5 +91,11 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
         //
+    }
+
+    public function image(Restaurant $restaurant)
+    {
+        $image = $restaurant->image;
+        return Response::make($image->encode($restaurant->image_type));
     }
 }

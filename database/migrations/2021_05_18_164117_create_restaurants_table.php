@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateRestaurantsTable extends Migration
@@ -18,9 +19,11 @@ class CreateRestaurantsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->binary('image')->nullable();
+            $table->string('image_type')->nullable();
             $table->timestamps();
         });
+
+        DB::statement("ALTER TABLE restaurants ADD image LONGBLOB DEFAULT NULL");
     }
 
     /**

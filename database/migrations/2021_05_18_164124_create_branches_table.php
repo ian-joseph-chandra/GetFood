@@ -18,7 +18,7 @@ class CreateBranchesTable extends Migration
             $table->unsignedBigInteger('restaurant_id');
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
             $table->string('location');
-            $table->decimal('rating_average',  2, 1);
+            $table->decimal('rating_average',  2, 1)->default(0);
             $table->integer('rating_quantity')->default(0);
             $table->timestamps();
         });
