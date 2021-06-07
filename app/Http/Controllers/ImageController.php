@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Response;
 use Intervention\Image\Facades\Image;
 
 class ImageController extends Controller
@@ -24,4 +24,5 @@ class ImageController extends Controller
 
         return $response;
     }
+
 }
