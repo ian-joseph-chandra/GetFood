@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="device">
-        <nav class="navbar navbar-light bg-light mb-3">
+        <nav class="navbar navbar-light bg-light mb-5 fixed-top">
             <a class="arrow left" href="#"></a>
             <span class="navbar-brand">Get Food</span>
 

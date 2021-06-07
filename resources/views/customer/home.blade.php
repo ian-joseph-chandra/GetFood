@@ -2,20 +2,10 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
-            <select placeholder="Select Category" class="form-control" name="category_id" id="categorySelection">
-                <option>Select Category</option>
-                <option>Main Course</option>
-                <option>Beverages</option>
-            </select>
-        </div>
-
-        <form class="d-flex col-9">
-            <input class="form-control me-2" type="search" placeholder="What are you craving?" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
+    <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="What are you craving?" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
 
     <div class="card mt-3">
         <div class="card-header">Recommended For You</div>

@@ -13,6 +13,14 @@
             </div>
         </div>
 
+        <div class="col-md-3 mt-3 pl-0">
+            <select placeholder="Select Category" class="form-control" name="category_id" id="categorySelection">
+                <option>Select Category</option>
+                <option>Main Course</option>
+                <option>Beverages</option>
+            </select>
+        </div>
+
         <div class="card mt-3 mb-3">
             <div class="card-header">
                 Menus
