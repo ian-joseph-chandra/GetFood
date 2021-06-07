@@ -66,6 +66,15 @@ Route::prefix('driver')->group(function () {
     Route::get('/order', function () {
         return view('driver.detail-order');
     });
+
+    Route::get('/register', function () {
+        return view('driver.register');
+    });
+
+    Route::get('/login', function () {
+        return view('driver.login');
+    });
+
 });
 
 // Route for Restaurant subdirectory
