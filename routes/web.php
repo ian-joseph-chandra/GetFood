@@ -80,10 +80,10 @@ Route::prefix('driver')->group(function () {
 // Route for Restaurant subdirectory
 Route::prefix('restaurant/{restaurant}')->group(function () {
     Route::get('/', function () {
-        return redirect('/restaurant/home/1');
+        return redirect('/restaurant/1/home');
     });
 
-    Route::get('/home/{restaurant}', [RestaurantPageController::class, 'home']);
+    Route::get('/home/', [RestaurantPageController::class, 'home']);
 
     Route::get('/register', function () {
         return view('restaurant.register');
@@ -129,4 +129,3 @@ Route::prefix('api')->group(function () {
     Route::resource('restaurants.menu_categories', MenuCategoryController::class)->shallow();
     Route::resource('restaurants.menus', MenuController::class)->shallow();
 });
-

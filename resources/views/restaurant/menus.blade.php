@@ -63,8 +63,11 @@
                                 </div>
 
                                 <div class="col-8">
-
-                                    <a href="" class="btn btn-sm btn-danger" onclick="">Delete</a>
+                                    <form method="POST" action="{{url('/api/menus/'.$menu->id)}}">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
