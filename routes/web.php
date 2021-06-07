@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\MenuCategoryController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\pages\CustomerPageController;
 use App\Http\Controllers\pages\RestaurantPageController;
 use App\Http\Controllers\RestaurantController;
@@ -91,9 +92,7 @@ Route::prefix('restaurant')->group(function () {
 
     Route::get('/{restaurant}/menus', [RestaurantPageController::class, 'menus']);
 
-    Route::get('/{restaurant}/add-menu', function () {
-        return view('restaurant.add-menu');
-    });
+    Route::get('/{restaurant}/add-menu', [RestaurantPageController::class, 'add_menu']);
 
     Route::get('/{restaurant}/add-menu-category', [RestaurantPageController::class, 'add_menu_category']);
 
@@ -113,11 +112,13 @@ Route::prefix('restaurant')->group(function () {
 Route::prefix('api')->group(function () {
     Route::resources([
         'restaurants' => RestaurantController::class,
-        'branches' => BranchController::class
+        'branches' => BranchController::class,
+        'menus' => MenuController::class
     ]);
 
     Route::resource('restaurants.branches', BranchController::class)->shallow();
     Route::resource('branches.restaurants', RestaurantController::class)->shallow();
     Route::resource('restaurants.menu_categories', MenuCategoryController::class)->shallow();
+    Route::resource('restaurants.menus', MenuController::class)->shallow();
 });
 

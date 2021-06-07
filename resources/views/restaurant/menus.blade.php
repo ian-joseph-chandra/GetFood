@@ -7,8 +7,9 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-2 mt-1">
-                        <p class="h5">Restoran Mahal</p>
+                        <p class="h5">{{$restaurant->name}}</p>
                     </div>
+
                     <div class="col-md-3 mt-1">
                         <select placeholder="Select Category" class="form-control" name="category_id"
                                 id="categorySelection">
@@ -18,19 +19,22 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-5">
+
+                    <div class="col-6">
                         <button type="button" class="btn btn-info btn-md float-right"
-                                onclick="window.location='/restaurant/{{$restaurant->id}}/add-menu-category'">+ New
-                            Category
+                                onclick="window.location='/restaurant/{{$restaurant->id}}/add-menu-category'">
+                            + New Category
                         </button>
                     </div>
-                    <div class="col-2">
+
+                    <div class="col-1.5">
                         <button type="button" class="btn btn-info btn-md float-right"
-                                onclick="window.location='/restaurant/{{$restaurant->id}}}/add-menu'">+ New Menu
+                                onclick="window.location='/restaurant/{{$restaurant->id}}/add-menu'">+ New Menu
                         </button>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-12 mt-3">
                 <table class="table table-hover">
                     <thead class="thead-dark">
@@ -66,6 +70,6 @@
     </div>
 
     <script>
-        
+
     </script>
 @endsection

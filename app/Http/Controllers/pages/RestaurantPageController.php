@@ -23,7 +23,7 @@ class RestaurantPageController extends Controller
 
     public function menus(Restaurant $restaurant)
     {
-        $menu_categories = (new MenuCategoryController)->index();
+        $menu_categories = (new MenuCategoryController)->index($restaurant);
         return view('restaurant.menus', compact('restaurant', 'menu_categories'));
     }
 
@@ -35,6 +35,12 @@ class RestaurantPageController extends Controller
     public function add_menu_category(Restaurant $restaurant)
     {
         return view('restaurant.add-menu-category', compact('restaurant'));
+    }
+
+    public function add_menu(Restaurant $restaurant)
+    {
+        $menu_categories = (new MenuCategoryController)->index($restaurant);
+        return view('restaurant.add-menu', compact('restaurant', 'menu_categories'));
     }
 
     public function login(Request $request)

@@ -19,9 +19,9 @@ class MenuCategoryController extends Controller
      *
      * @return Collection|MenuCategory[]
      */
-    public function index()
+    public function index(Restaurant $restaurant)
     {
-        return MenuCategory::all();
+        return MenuCategory::all()->where('restaurant_id', $restaurant->id);
     }
 
     /**

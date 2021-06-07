@@ -30,7 +30,6 @@
                         </div>
                     </div>
 
-
                     <div class="col-3">
                         <button type="button" class="btn btn-info btn-md float-right"
                                 onclick="window.location='/restaurant/{{$restaurant->id}}/add-branch'">+ Branch
