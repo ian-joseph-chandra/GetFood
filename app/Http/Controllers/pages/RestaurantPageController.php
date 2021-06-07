@@ -21,6 +21,12 @@ class RestaurantPageController extends Controller
 //        return compact('restaurant');
     }
 
+    public function menu_categories(Restaurant $restaurant)
+    {
+        // $menu_categories = ()
+        return view('restaurant.menu_categories', compact('restaurant'));
+    }
+
     public function menus(Restaurant $restaurant)
     {
         $menu_categories = (new MenuCategoryController)->index($restaurant);

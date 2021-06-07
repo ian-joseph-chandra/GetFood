@@ -94,17 +94,15 @@ Route::prefix('restaurant')->group(function () {
 
     Route::get('/{restaurant}/add-menu', [RestaurantPageController::class, 'add_menu']);
 
-    Route::get('/{restaurant}/add-menu-category', [RestaurantPageController::class, 'add_menu_category']);
+    Route::get('/{restaurant}/menu-categories', [RestaurantPageController::class, 'menu_categories']);
 
+    Route::get('/{restaurant}/add-menu-category', [RestaurantPageController::class, 'add_menu_category']);
+    
     Route::get('/{restaurant}/add-branch', [RestaurantPageController::class, 'add_branch']);
 
 
     Route::get('/history', function () {
         return view('restaurant.history');
-    });
-
-    Route::get('/categories', function () {
-        return view('restaurant.add-category');
     });
 });
 

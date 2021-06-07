@@ -2,29 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="card mt-3">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-2 mt-1">
-                    <p class="h5">{{$restaurant->name}}</p>
-                </div>
-
-                <div class="col-md-3 mt-1">
-                    <select placeholder="Select Category" class="form-control" name="category_id" id="categorySelection">
-                        <option value="">All menus</option>
-                        @foreach($menu_categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="col-7">
-                    <button type="button" class="btn btn-info btn-md float-right" onclick="window.location='/restaurant/{{$restaurant->id}}/add-menu'">+ New Menu
-                    </button>
-                </div>
-            </div>
-        </div>
-
+    <div class="row justify-content-center">
         <div class="col-md-12 mt-3">
             <table class="table table-hover">
                 <thead class="thead-dark">
@@ -81,3 +59,10 @@
     </div>
 </div>
 @endsection
+
+
+<div class="col-4.5">
+    <button type="button" class="btn btn-info btn-md float-right" onclick="window.location='/restaurant/{{$restaurant->id}}/add-menu-category'">
+        + New Category
+    </button>
+</div>
