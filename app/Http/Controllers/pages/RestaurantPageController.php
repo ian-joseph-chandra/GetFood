@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\RestaurantController;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -20,6 +21,12 @@ class RestaurantPageController extends Controller
 //        return compact('restaurant');
     }
 
+    public function menus(Restaurant $restaurant)
+    {
+        $menu_categories = (new MenuCategoryController)->index();
+        return view('restaurant.menus', compact('restaurant', 'menu_categories'));
+    }
+
     public function add_branch(Restaurant $restaurant)
     {
         return view('restaurant.add-branch', compact('restaurant'));
@@ -27,6 +34,7 @@ class RestaurantPageController extends Controller
 
     public function add_menu_category(Restaurant $restaurant)
     {
+        return view('restaurant.add-menu-category', compact('restaurant'));
     }
 
     public function login(Request $request)

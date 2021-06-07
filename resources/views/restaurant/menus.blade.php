@@ -12,19 +12,21 @@
                     <div class="col-md-3 mt-1">
                         <select placeholder="Select Category" class="form-control" name="category_id"
                                 id="categorySelection">
-                            <option>Snacks</option>
-                            <option>Main Course</option>
-                            <option>Beverages</option>
+                            <option value="">All menus</option>
+                            @foreach($menu_categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-5">
                         <button type="button" class="btn btn-info btn-md float-right"
-                                onclick="window.location='/restaurant/add-category'">+ New Category
+                                onclick="window.location='/restaurant/{{$restaurant->id}}/add-menu-category'">+ New
+                            Category
                         </button>
                     </div>
                     <div class="col-2">
                         <button type="button" class="btn btn-info btn-md float-right"
-                                onclick="window.location='/restaurant/add-menu'">+ New Menu
+                                onclick="window.location='/restaurant/{{$restaurant->id}}}/add-menu'">+ New Menu
                         </button>
                     </div>
                 </div>
@@ -60,8 +62,10 @@
                     </tbody>
                 </table>
             </div>
-
-
         </div>
+    </div>
 
+    <script>
+        
+    </script>
 @endsection

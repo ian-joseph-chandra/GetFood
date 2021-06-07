@@ -19,10 +19,10 @@ class RestaurantSeeder extends Seeder
                 'name' => 'KFC',
                 'email' => 'resto@kfc.com',
                 'password' => 'kfc',
-//                'image' => file_get_contents('public/images/restaurants/logo/KFC.png'),
-//                'image_type' => ('png')
                 'image' => null,
                 'image_type' => null
+//                'image' => file_get_contents('public/images/restaurants/logo/KFC.png'),
+//                'image_type' => ('png')
             ],
             [
                 'name' => 'Ichiran',

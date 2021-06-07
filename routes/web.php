@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\pages\CustomerPageController;
 use App\Http\Controllers\pages\RestaurantPageController;
 use App\Http\Controllers\RestaurantController;
@@ -84,15 +85,13 @@ Route::prefix('restaurant')->group(function () {
 
     Route::post('/login', [RestaurantPageController::class, 'login']);
 
-    Route::get('/orders', function () {
+    Route::get('/{restaurant}/orders', function () {
         return view('restaurant.order-detail');
     });
 
-    Route::get('/menu', function () {
-        return view('restaurant.menu');
-    });
+    Route::get('/{restaurant}/menus', [RestaurantPageController::class, 'menus']);
 
-    Route::get('/add-menu', function () {
+    Route::get('/{restaurant}/add-menu', function () {
         return view('restaurant.add-menu');
     });
 
@@ -119,5 +118,6 @@ Route::prefix('api')->group(function () {
 
     Route::resource('restaurants.branches', BranchController::class)->shallow();
     Route::resource('branches.restaurants', RestaurantController::class)->shallow();
+    Route::resource('restaurants.menu_categories', MenuCategoryController::class)->shallow();
 });
 
