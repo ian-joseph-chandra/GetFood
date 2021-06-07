@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\MenuCategory;
 use App\Models\Restaurant;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
@@ -16,9 +17,12 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Restaurant $restaurant, MenuCategory $menu_category)
     {
-        //
+        if($menu_category == null)
+            return $restaurant->show($restaurant->id)->with('menu_categories')->all();
+
+//        return $restaurant
     }
 
     /**

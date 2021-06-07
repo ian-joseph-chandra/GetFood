@@ -17,21 +17,39 @@ class MenuSeeder extends Seeder
         DB::table('menus')->insert([
             [
                 'category_id' => 1,
-                'name' => 'Burgers',
+                'name' => 'Zuper Krunch',
                 'description' => '',
-                'price' => 1
+                'price' => 70
             ],
             [
                 'category_id' => 1,
-                'name' => 'Burgers',
+                'name' => 'Chicken Fillet',
                 'description' => '',
-                'price' => 1
+                'price' => 40
             ],
             [
                 'category_id' => 1,
-                'name' => 'Burgers',
+                'name' => 'Fish Fillet',
                 'description' => '',
-                'price' => 1
+                'price' => 30
+            ],
+            [
+                'category_id' => 2,
+                'name' => 'Original Chicken',
+                'description' => '',
+                'price' => 30
+            ],
+            [
+                'category_id' => 2,
+                'name' => 'Crispy Chicken',
+                'description' => '',
+                'price' => 40
+            ],
+            [
+                'category_id' => 2,
+                'name' => 'Mala Crispy Chicken',
+                'description' => '',
+                'price' => 45
             ],
             [
                 'category_id' => 3,

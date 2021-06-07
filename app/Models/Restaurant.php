@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Restaurant extends Model
 {
@@ -32,6 +33,17 @@ class Restaurant extends Model
 
     public function menu_categories(): HasMany
     {
-        return $this->hasMany(Menu::class, 'restaurant_id', 'id');
+        return $this->hasMany(MenuCategory::class, 'restaurant_id', 'id');
+    }
+
+    public function menus(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            Menu::class,
+            MenuCategory::class,
+            'restaurant_id',
+            'category_id',
+            'id',
+            'id');
     }
 }

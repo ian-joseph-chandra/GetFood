@@ -59,7 +59,7 @@ class MenuCategoryController extends Controller
      */
     public function show(MenuCategory $menuCategory)
     {
-        //
+
     }
 
     /**
@@ -95,4 +95,6 @@ class MenuCategoryController extends Controller
     {
         //
     }
+
+
 }

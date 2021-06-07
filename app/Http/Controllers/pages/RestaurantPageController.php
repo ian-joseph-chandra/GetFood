@@ -4,7 +4,9 @@ namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MenuCategoryController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RestaurantController;
+use App\Models\MenuCategory;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,19 +20,23 @@ class RestaurantPageController extends Controller
         //        $restaurant = Restaurant::with('branches')->find(1);
 
         return view('restaurant.home', compact('restaurant'));
-//        return compact('restaurant');
     }
 
     public function menu_categories(Restaurant $restaurant)
     {
-        // $menu_categories = ()
         return view('restaurant.menu_categories', compact('restaurant'));
     }
 
-    public function menus(Restaurant $restaurant)
+    public function menus(Restaurant $restaurant, MenuCategory $menu_category)
     {
-        $menu_categories = (new MenuCategoryController)->index($restaurant);
-        return view('restaurant.menus', compact('restaurant', 'menu_categories'));
+        $menu_categories = $restaurant->menu_categories()->get();
+
+        if ($menu_category != null) {
+            $menus = $restaurant->menus()->with('menu_category')->get();
+        } else
+            $menus = $restaurant->menu_categories()->findOrFail($menu_category->id)->menus()->get();
+
+        return view('restaurant.menus', compact('restaurant', 'menu_categories', 'menus'));
     }
 
     public function add_branch(Restaurant $restaurant)
