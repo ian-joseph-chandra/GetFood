@@ -28,14 +28,13 @@ class RestaurantPageController extends Controller
         return view('restaurant.menu_categories', compact('restaurant'));
     }
 
-    public function menus(Restaurant $restaurant, MenuCategory $menu_category)
+    public function menus(Restaurant $restaurant)
     {
         $menu_categories = $restaurant->menu_categories()->get();
         $selected = null;
         $menus = $restaurant->menus()->with('menu_category')->get();
 
         return view('restaurant.menus', compact('restaurant', 'menu_categories', 'menus', 'selected'));
-//        return (compact('menu_category', 'menus', 'selected'));
     }
 
     public function menus_by_category(Restaurant $restaurant, MenuCategory $menu_category)
@@ -46,7 +45,6 @@ class RestaurantPageController extends Controller
         $menus = $menu_category->menus()->get();
 
         return view('restaurant.menus', compact('restaurant', 'menu_categories', 'menus', 'selected'));
-//        return (compact('menu_category', 'menu_categories', 'menus', 'selected'));
     }
 
     public function add_branch(Restaurant $restaurant)

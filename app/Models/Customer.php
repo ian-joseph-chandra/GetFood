@@ -18,6 +18,11 @@ class Customer extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function carts(): HasMany
+    {
+        return $this->hasMany(Cart::class, 'branch_id', 'id');
+    }
+
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class, 'customer_id', 'id');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\pages;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
+use App\Models\MenuCategory;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class CustomerPageController extends Controller
@@ -25,10 +27,24 @@ class CustomerPageController extends Controller
 //        return compact('recommendations');
     }
 
-    public function restaurant(Branch $branch)
+    public function menus(Branch $branch)
     {
-        $branch = (new BranchController())->show($branch);
+        $restaurant = $branch->restaurant()->first();
+        $menu_categories = MenuCategory::with('menus')->where('restaurant_id', $restaurant->id)->get();
+        $menu_category = null;
+        $selected = null;
 
-        return view('customer.restaurant', compact('branch'));
+        return view('customer.menus', compact('restaurant', 'branch', 'menu_categories', 'menu_category', 'selected'));
+    }
+
+    public function menus_by_category(Branch $branch, MenuCategory $menu_category)
+    {
+        $restaurant = $branch->restaurant()->first();
+        $menu_categories = $restaurant->menu_categories()->get();
+        $selected = $menu_category->id;
+        $menu_category = [$menu_category];
+
+        return view('customer.menus', compact('restaurant', 'branch', 'menu_categories', 'menu_category', 'selected'));
+//        return compact('restaurant', 'branch', 'menu_categories', 'menu_category', 'selected');
     }
 }

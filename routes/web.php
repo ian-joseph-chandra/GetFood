@@ -30,7 +30,9 @@ Route::prefix('customer')->group(function () {
 
     Route::get('/home', [CustomerPageController::class, 'home']);
 
-    Route::get('/restaurants/{branch}', [CustomerPageController::class, 'restaurant']);
+    Route::get('/branches/{branch}/menus', [CustomerPageController::class, 'menus']);
+
+    Route::get('/branches/{branch}/categories/{menu_category}/menus', [CustomerPageController::class, 'menus_by_category']);
 
     Route::get('/add-to-basket', function () {
         return view('customer.add-to-basket');

@@ -31,6 +31,11 @@ class Menu extends Model
         return $this->hasMany(Stock::class, 'menu_id', 'id');
     }
 
+    public function cart_details(): HasMany
+    {
+        return $this->hasMany(CartDetail::class, 'menu_id', 'id');
+    }
+
     public function order_details(): HasMany
     {
         return $this->hasMany(OrderDetail::class, 'menu_id', 'id');

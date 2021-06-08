@@ -13,7 +13,7 @@
             <ul class="list-group list-group-flush">
                 @foreach($recommendations[0] as $branch)
                     <li class="list-group-item" style="cursor: pointer"
-                        onclick="window.location='/customer/restaurants/{{$branch->id}}'">
+                        onclick="window.location='/customer/branches/{{$branch->id}}/menus'">
                         <div class="row">
                             <div class="ml-3">
                                 <img
@@ -38,7 +38,7 @@
             <ul class="list-group list-group-flush">
                 @foreach($recommendations[1] as $branch)
                     <li class="list-group-item" style="cursor: pointer"
-                        onclick="window.location = '/customer/restaurants/{{$branch->id}}'">
+                        onclick="window.location = '/customer/branches/{{$branch->id}}/menus'">
                         <div class="row">
                             <div class="ml-3">
                                 <img
