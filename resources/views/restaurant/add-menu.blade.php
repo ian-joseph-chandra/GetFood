@@ -8,7 +8,7 @@
                     <h4 class="card-text text-center font-weight-bold mt-3">New Menu</h4>
 
                     <div class="card-body">
-                        <form action="{{url('/api/restaurants/'.$restaurant->id.'/menus')}}" method="post">
+                        <form action="{{url('/api/restaurants/'.$restaurant->id.'/menus')}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group row">

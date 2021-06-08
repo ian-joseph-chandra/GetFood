@@ -43,11 +43,18 @@ class MenuController extends Controller
      */
     public function store(Request $request, Restaurant $restaurant)
     {
+        $image = $request->file('image');
+        $filename = now()->timestamp . now()->microsecond . '.' . $image->getClientOriginalExtension();
+        $menu_path = 'images/restaurants/'.$restaurant->id.'/menus/';
+        $image->move(base_path('public/'.$menu_path), $filename);
+        $image_path = $menu_path.$filename;
+
         $menu = new Menu([
             'category_id' => $request->category_id,
             'name' => $request->name,
             'description' => $request->description,
-            'price' => $request->price
+            'price' => $request->price,
+            'image' => $image_path
         ]);
         $menu->save();
 

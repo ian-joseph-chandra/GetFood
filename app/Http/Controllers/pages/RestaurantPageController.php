@@ -79,7 +79,7 @@ class RestaurantPageController extends Controller
 
     public function add_menu(Restaurant $restaurant)
     {
-        $menu_categories = (new MenuCategoryController)->index($restaurant);
+        $menu_categories = $restaurant->menu_categories()->get();
         return view('restaurant.add-menu', compact('restaurant', 'menu_categories'));
     }
 

@@ -52,7 +52,8 @@
                     <tbody>
                     @foreach($menus as $menu)
                         <tr>
-                            <td><img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo"></td>
+                            <td><img src="{{ asset( $menu->image == null ?
+                                                    'images/logo-restaurant.jpg' : $menu->image) }}" class="logo"></td>
                             <td>{{$menu->name}}</td>
                             <td>{{$menu->menu_category->name}}</td>
                             <td>{{$menu->description}}</td>
