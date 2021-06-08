@@ -3,21 +3,24 @@
 @section('content')
     <div class="container-fluid">
         <div class="card">
-            <img class="card-img-top" src="{{ asset('images/logo-restaurant.jpg') }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset($menu->image == null ?
+                                                    'images/logo-restaurant.jpg' : $menu->image)  }}"
+                 alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">Menu Murah Blablabla</h5>
-                <p class="card-text">Deskripsi Menu</p>
+                <h5 class="card-title">{{$menu->name}}</h5>
+                <p class="card-text">{{$menu->description}}</p>
                 <hr>
+
                 <div class="mb-3">
                     <label for="textAreaNotes" class="form-label">Notes</label>
-                    <textarea class="form-control" id="textAreaNotes" rows="2" placeholder="optional notes"></textarea>
+                    <textarea disabled class="form-control" id="textAreaNotes" rows="2" placeholder="optional notes"></textarea>
                 </div>
 
-                <form action="" method="post">
+                <form action="" method="POST">
                     @csrf
-                    <label for="txtQuantity">Quantity</label>
+                    <label for="quantity">Quantity</label>
                     <br>
-                    <input type="number" name="quantity" id="txtQuantity" class="form-control" value="1" >
+                    <input type="number" name="quantity" id="quantity" class="form-control" value="1">
                     <br>
                     <button class="btn btn-success mt-3" type="submit">Add To Cart</button>
                 </form>

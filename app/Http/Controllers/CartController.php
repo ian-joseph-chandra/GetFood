@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -22,9 +23,10 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Menu $menu, Cart $cart)
     {
-        //
+        return view('customer.add-cart', compact('menu', 'cart'));
+//        return compact('menu', 'cart');
     }
 
     /**
@@ -35,7 +37,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

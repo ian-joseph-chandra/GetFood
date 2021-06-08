@@ -40,7 +40,7 @@
 
             <ul class="list-group list-group-flush">
                 @foreach($category->menus as $menu)
-                    <li class="list-group-item" onclick="window.location='/customer/menus/{{$menu->id}}/add-cart'">
+                    <li class="list-group-item" onclick="window.location='/api/menus/{{$menu->id}}/carts/create'">
                         <div class="row">
                             <div class="ml-3">
                                 <img src="{{ asset($menu->image == null ?
@@ -65,5 +65,9 @@
                 '/customer/branches/{{$branch->id}}/menus' :
                 '/customer/branches/{{$branch->id}}/categories/' + document.getElementById('category_id').value + '/menus';
         })
+
+        function check_cart(){
+            {{}}
+        }
     </script>
 @endsection
