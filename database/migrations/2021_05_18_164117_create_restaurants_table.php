@@ -19,11 +19,9 @@ class CreateRestaurantsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('image_type')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
-
-        DB::statement("ALTER TABLE restaurants ADD image LONGBLOB DEFAULT NULL");
     }
 
     /**

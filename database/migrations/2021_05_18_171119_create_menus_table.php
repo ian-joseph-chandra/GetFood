@@ -21,11 +21,9 @@ class CreateMenusTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->unsignedInteger('price')->nullable();
-            $table->string('image_type')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
-
-        DB::statement("ALTER TABLE menus ADD image LONGBLOB DEFAULT NULL");
     }
 
     /**
