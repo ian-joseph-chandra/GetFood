@@ -12,12 +12,12 @@
     @yield('head')
 </head>
 <body>
-    <div class="device">
-        <nav class="navbar navbar-light bg-light mb-5 fixed-top">
-            <a class="arrow left" href="#"></a>
-            <span class="navbar-brand">Get Food</span>
+<div class="device">
+    <nav class="navbar navbar-light bg-light mb-5 fixed-top">
+        <a class="arrow left" href="#"></a>
+        <span class="navbar-brand">Get Food</span>
 
-        <i class="fa fa-shopping-basket" role="button" style="font-size: 20px;" aria-hidden="true"></i>
+        <a href=""><i class="fa fa-shopping-basket" role="button" style="font-size: 20px;" aria-hidden="true"></i></a>
     </nav>
     @yield('content')
 </div>

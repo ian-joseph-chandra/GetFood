@@ -24,7 +24,6 @@ class CustomerPageController extends Controller
             array_push($recommendations[1], $branches[$i]);
 
         return view('customer.home', compact('recommendations'));
-//        return compact('recommendations');
     }
 
     public function menus(Branch $branch)
@@ -45,7 +44,6 @@ class CustomerPageController extends Controller
         $menu_category = [$menu_category];
 
         return view('customer.menus', compact('restaurant', 'branch', 'menu_categories', 'menu_category', 'selected'));
-//        return compact('restaurant', 'branch', 'menu_categories', 'menu_category', 'selected');
     }
 
     public function postLogin(Request $request)

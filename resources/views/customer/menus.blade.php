@@ -40,7 +40,7 @@
 
             <ul class="list-group list-group-flush">
                 @foreach($category->menus as $menu)
-                    <li class="list-group-item">
+                    <li class="list-group-item" onclick="window.location='/customer/menus/{{$menu->id}}/add-cart'">
                         <div class="row">
                             <div class="ml-3">
                                 <img src="{{ asset($menu->image == null ?

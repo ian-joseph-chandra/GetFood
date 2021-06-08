@@ -6,6 +6,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\pages\CustomerPageController;
 use App\Http\Controllers\pages\RestaurantPageController;
 use App\Http\Controllers\RestaurantController;
+use App\Models\MenuCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,12 +37,12 @@ Route::prefix('customer')->group(function () {
 
     Route::get('/branches/{branch}/categories/{menu_category}/menus', [CustomerPageController::class, 'menus_by_category']);
 
-    Route::get('/add-to-basket', function () {
-        return view('customer.add-to-basket');
+    Route::get('/menus/{menu}/add-cart', function () {
+        return view('customer.add-cart');
     });
 
-    Route::get('/basket', function () {
-        return view('customer.basket');
+    Route::get('/cart', function () {
+        return view('customer.cart');
     });
 
     Route::get('/wait-order', function () {
@@ -61,7 +62,7 @@ Route::prefix('customer')->group(function () {
     // });
 
     //     Route::get('login', [AuthController::class, 'index'])->name('login');
-    // Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
+    // Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 
     Route::get('/login', [CustomerPageController::class, 'getLogin'])->name('login');
 
@@ -119,7 +120,7 @@ Route::prefix('restaurant/{restaurant}')->group(function () {
 
     Route::get('/add-menu', [RestaurantPageController::class, 'add_menu']);
     Route::get('/menu-categories', [RestaurantPageController::class, 'menu_categories'])->name('restaurant.menu_categories');
-    Route::get('/menu-categories/{menu_category}/edit', 
+    Route::get('/menu-categories/{menu_category}/edit',
         [RestaurantPageController::class, 'menu_categories_edit'])->name('restaurant.menu_categories.edit');
 
 
