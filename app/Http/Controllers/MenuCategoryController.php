@@ -21,7 +21,10 @@ class MenuCategoryController extends Controller
      */
     public function index(Restaurant $restaurant)
     {
-        return MenuCategory::all()->where('restaurant_id', $restaurant->id);
+        // return MenuCategory::all()->where('restaurant_id', $restaurant->id);
+
+        $menu_categories = MenuCategory::all();
+        return view('restaurant.menu_categories')->with('menu_categories', $menu_categories);
     }
 
     /**
@@ -48,7 +51,7 @@ class MenuCategoryController extends Controller
         ]);
         $menu_category->save();
 
-        return redirect('/restaurant/'.$restaurant->id.'/menus')->with('flash_message_success', 'Successfully created a new menu category!');
+        return redirect('/restaurant/' . $restaurant->id . '/menus')->with('flash_message_success', 'Successfully created a new menu category!');
     }
 
     /**
@@ -59,7 +62,6 @@ class MenuCategoryController extends Controller
      */
     public function show(MenuCategory $menuCategory)
     {
-
     }
 
     /**
@@ -68,10 +70,11 @@ class MenuCategoryController extends Controller
      * @param \App\Models\MenuCategory $menuCategory
      * @return Response
      */
-    public function edit(MenuCategory $menuCategory)
+    public function edit(MenuCategory $menu_category)
     {
         //
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -80,9 +83,14 @@ class MenuCategoryController extends Controller
      * @param \App\Models\MenuCategory $menuCategory
      * @return Response
      */
-    public function update(Request $request, MenuCategory $menuCategory)
+    public function update(Request $request, MenuCategory $menu_category)
     {
-        //
+        $menu_category->name = $request->name;
+        $menu_category->save();
+        $restaurant = $menu_category->restaurant()->first();
+        $menu_categories = $restaurant->menu_categories()->get();
+
+        return view('restaurant.menu_categories', compact('restaurant', 'menu_categories'));
     }
 
     /**
@@ -91,10 +99,13 @@ class MenuCategoryController extends Controller
      * @param \App\Models\MenuCategory $menuCategory
      * @return Response
      */
-    public function destroy(MenuCategory $menuCategory)
+    public function destroy(MenuCategory $menu_categories)
     {
-        //
+        foreach($menu_categories->menus()->get() as $menu){
+            $menu->forcedelete();
+        }
+
+        $menu_categories->forceDelete();
+        return back();
     }
-
-
 }

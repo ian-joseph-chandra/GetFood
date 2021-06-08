@@ -25,10 +25,17 @@ class RestaurantPageController extends Controller
 
     public function menu_categories(Restaurant $restaurant)
     {
-        return view('restaurant.menu_categories', compact('restaurant'));
+        $menu_categories = $restaurant->menu_categories()->get();
+
+        return view('restaurant.menu_categories', compact('restaurant', 'menu_categories'));
     }
 
-    public function menus(Restaurant $restaurant)
+    public function menu_categories_edit(Restaurant $restaurant, MenuCategory $menu_category)
+    {
+        return view('restaurant.edit-menu-category', compact('restaurant', 'menu_category'));
+    }
+
+    public function menus(Restaurant $restaurant, MenuCategory $menu_category)
     {
         $menu_categories = $restaurant->menu_categories()->get();
         $selected = null;
@@ -47,9 +54,22 @@ class RestaurantPageController extends Controller
         return view('restaurant.menus', compact('restaurant', 'menu_categories', 'menus', 'selected'));
     }
 
+   
     public function add_branch(Restaurant $restaurant)
     {
         return view('restaurant.add-branch', compact('restaurant'));
+    }
+    
+    public function add(Request $request){
+        $validatedData = $request->validate([
+            'category_name' => 'required|unique:categories,category_name',
+        ]);
+
+        $category = new MenuCategory;
+        $category->category_name = $request->category_name;
+        $category->save();
+
+        return redirect('/restaurant/add-menu-category');
     }
 
     public function add_menu_category(Restaurant $restaurant)
@@ -70,15 +90,6 @@ class RestaurantPageController extends Controller
             'password' => 'required',
         ]);
 
-        // $parameter = new Restaurant([
-        //     'email' => $request->only('email'),
-        //     'password' => $request->only('password')
-        // ]);
-
-        // $restaurant = (new RestaurantController)->show($parameter);
-
-        // return $restaurant;
-
         $user = $request->only('email', 'password');
         $remember = $request->input('remember');
 
@@ -88,9 +99,9 @@ class RestaurantPageController extends Controller
                 session(['password' => $request->only('password')]);
             }
 
-            return redirect('/restaurant/home');
+            return redirect('/restaurant');
         }
 
-        return redirect('/restaurant/home')->with('flash_message_error', 'Invalid Username or Password');
+        return redirect('/restaurant/login')->with('flash_message_error', 'Invalid Username or Password');
     }
 }

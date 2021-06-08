@@ -6,8 +6,8 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\MenuCategory;
-use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerPageController extends Controller
 {
@@ -46,5 +46,32 @@ class CustomerPageController extends Controller
 
         return view('customer.menus', compact('restaurant', 'branch', 'menu_categories', 'menu_category', 'selected'));
 //        return compact('restaurant', 'branch', 'menu_categories', 'menu_category', 'selected');
+    }
+
+    public function postLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'email|required|string',
+            'password' => 'required',
+        ]);
+
+        $user = $request->only('email', 'password');
+        $remember = $request->input('remember');
+
+        if (Auth::attempt($user)) {
+            if (!empty($remember)) {
+                session(['email' => $request->only('email')]);
+                session(['password' => $request->only('password')]);
+            }
+
+            return redirect('/customer/home');
+        }
+
+        return redirect('/customer/login')->with('flash_message_error', 'Invalid Username or Password');
+    }
+
+    public function getLogin(Request $request)
+    {
+        return view('/customer/login');
     }
 }

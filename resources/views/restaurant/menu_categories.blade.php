@@ -13,38 +13,28 @@
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Category Name</th>
-                        <th scope="col">Description</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($menu_categories as $category)
                     <tr>
-                        <td>Snacks</td>
-                        <td>A snack is a small portion of food generally eaten between meals.</td>
+                        <td>{{$category->name}}</td>
                         <td class="row">
                             <div class="col-3">
-                                <a href="" class="btn btn-sm btn-primary" onclick="">Edit</a>
+                                <a href="{{ route('restaurant.menu_categories.edit', [$restaurant->id, $category->id] )}}" class="btn btn-sm btn-primary" onclick="">Edit</a>
                             </div>
 
                             <div class="col-5">
-                                <a href="" class="btn btn-sm btn-danger" onclick="">Delete</a>
+                                <form method="POST" action="{{ url('/api/menu_categories/'.$category->id) }}">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Delete this category along with all the menus?')">Delete</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Snacks</td>
-                        <td>A snack is a small portion of food generally eaten between meals.</td>
-                        <td class="row">
-                            <div class="col-3">
-                                <a href="" class="btn btn-sm btn-primary" onclick="">Edit</a>
-                            </div>
-
-                            <div class="col-5">
-
-                                <a href="" class="btn btn-sm btn-danger" onclick="">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

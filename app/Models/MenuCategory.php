@@ -14,8 +14,9 @@ class MenuCategory extends Model
     protected $table = 'menu_categories';
 
     protected $fillable = [
+        'restaurant_id',
         'name',
-        'description'
+        
     ];
 
     public function restaurant(): BelongsTo

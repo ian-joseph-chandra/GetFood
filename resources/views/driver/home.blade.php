@@ -35,14 +35,14 @@
                 </div>
             </div>
 
-            <div class="row mt-3">
-                <div class="col-5">
-                    <h5 class="mt-2">New Order</h5>
-                </div>
-                <div class="col-7">
+            <!-- <div class="row mt-3"> -->
+            <!-- <div class="col-5"> -->
+            <h5 class="mt-4">New Order</h5>
+            <!-- </div> -->
+            <!-- <div class="col-7">
                     <button type="button" class="btn btn-warning btn-md float-right text-white">History</button>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
             <div class="card mt-3 mb-3">
                 <div class="card-body">
                     <h5 class="text-center">Waiting for Order...</h5>
