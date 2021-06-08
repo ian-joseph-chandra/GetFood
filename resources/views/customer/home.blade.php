@@ -16,7 +16,10 @@
                         onclick="window.location='/customer/restaurants/{{$branch->id}}'">
                         <div class="row">
                             <div class="ml-3">
-                                <img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo">
+                                <img
+                                    src="{{ asset( $branch->restaurant->image == null ?
+                                                    'images/logo-restaurant.jpg' : $branch->restaurant->image) }}"
+                                    class="logo">
                             </div>
 
                             <div class="ml-3">
@@ -38,7 +41,10 @@
                         onclick="window.location = '/customer/restaurants/{{$branch->id}}'">
                         <div class="row">
                             <div class="ml-3">
-                                <img src="{{ asset('images/logo-restaurant.jpg') }}" class="logo">
+                                <img
+                                    src="{{ asset($branch->restaurant->image == null ?
+                                                    'images/logo-restaurant.jpg' : $branch->restaurant->image) }}"
+                                    class="logo">
                             </div>
 
                             <div class="ml-3">

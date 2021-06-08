@@ -49,7 +49,7 @@ class BranchController extends Controller
         ]);
         $branch->save();
 
-        return redirect('/restaurant/home/'.$restaurant->id)->with('flash_message_success', 'Successfully created a new branch!');
+        return redirect('/restaurant/home/' . $restaurant->id)->with('flash_message_success', 'Successfully created a new branch!');
     }
 
     /**
@@ -106,17 +106,6 @@ class BranchController extends Controller
      */
     public function order_by_rating()
     {
-        $branches = Branch::with('restaurant')->orderBy('rating_average', 'desc')->take(8)->get();
-
-        foreach ($branches as $branch) {
-            if($branch->restaurant->image != null) {
-                $image = $branch->restaurant->image;
-                $response = Response::make($image->encode($branch->restaurant->image_type));
-                $response->header('Content-Type', 'image/' . $branch->restaurant->image_type);
-                $branch->restaurant->image = $response;
-            }
-        }
-
-        return $branches;
+        return Branch::with('restaurant')->orderBy('rating_average', 'desc')->take(8)->get();;
     }
 }

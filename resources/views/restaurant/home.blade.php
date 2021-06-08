@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-1">
-                        <img src="data:image/png;base64,{{ chunk_split(base64_encode($restaurant->image)) }}" class="logo rounded-circle">
+                        <img src="{{ asset('$restaurant->image') }}" class="logo rounded-circle">
                     </div>
 
                     <div class="col-8">

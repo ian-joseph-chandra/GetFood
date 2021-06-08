@@ -3,7 +3,9 @@
 @section('content')
     <div class="container-fluid">
         <div class="card">
-            <img class="card-img-top" src="{{ asset('images/logo-restaurant.jpg') }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset( $branch->restaurant->image == null ?
+                                                    'images/logo-restaurant.jpg' : $branch->restaurant->image)  }}"
+                 alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{$branch->restaurant->name}} {{$branch->location}}</h5>
                 <span class="badge badge-success badge-pill">{{$branch->rating_average}} ★</span>
@@ -37,6 +39,7 @@
                         </div>
                     </div>
                 </li>
+
                 <li class="list-group-item">
                     <div class="row">
                         <div class="ml-3">
