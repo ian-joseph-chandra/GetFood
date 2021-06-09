@@ -79,9 +79,7 @@ Route::prefix('driver')->group(function () {
         return redirect('/driver/home');
     });
 
-    Route::get('/home', function () {
-        return view('driver.home');
-    });
+    Route::get('/home', [OrderController::class, 'index']);
 
     Route::get('/order', function () {
         return view('driver.detail-order');
@@ -146,7 +144,8 @@ Route::prefix('api')->group(function () {
         'branches' => BranchController::class,
         'menus' => MenuController::class,
         'menu-categories' => MenuCategory::class,
-        'cart_details' => CartController::class
+        'cart_details' => CartController::class,
+        'orders' => OrderController::class
     ]);
 
     Route::resource('restaurants.branches', BranchController::class)->shallow();

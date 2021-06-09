@@ -17,7 +17,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::with('branch.restaurant')->with('customer.user')->get();
+
+        return view('driver.home', compact('orders'));
+        //return compact('orders');
     }
 
     /**
