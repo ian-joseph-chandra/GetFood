@@ -13,6 +13,7 @@
                     <p class="card-text"><strong>Time</strong></p>
                     <p class="card-text"><strong>Status</strong></p>
                 </div>
+                
                 <div class="col-6">
                     <p class="card-text">#1234</p>
                     <p class="card-text">Bambeng</p>

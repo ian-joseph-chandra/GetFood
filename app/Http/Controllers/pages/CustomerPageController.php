@@ -5,7 +5,9 @@ namespace App\Http\Controllers\pages;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
+use App\Models\Customer;
 use App\Models\MenuCategory;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +46,13 @@ class CustomerPageController extends Controller
         $menu_category = [$menu_category];
 
         return view('customer.menus', compact('restaurant', 'branch', 'menu_categories', 'menu_category', 'selected'));
+    }
+
+    function order_status(Customer $customer) {
+        $order = Order::with('customer.user')->with('driver.user')->with('order_details.menu')->where('customer_id', $customer->id)->get(); 
+        return view('customer.order-status',  compact('customer','order'));
+
+        // return compact('orders');
     }
 
     public function postLogin(Request $request)

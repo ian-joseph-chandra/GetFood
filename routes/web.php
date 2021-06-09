@@ -49,9 +49,7 @@ Route::prefix('customer')->group(function () {
         return view('customer.cart');
     });
 
-    Route::get('/wait-order', function () {
-        return view('customer.wait-order');
-    });
+    Route::get('/{customer}/order-status', [CustomerPageController::class, 'order_status']);
 
     Route::get('/rating', function () {
         return view('customer.rating');
