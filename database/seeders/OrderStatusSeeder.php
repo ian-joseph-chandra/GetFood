@@ -28,7 +28,7 @@ class OrderStatusSeeder extends Seeder
                 'description' => 'Order is processed and waiting for driver to be picked up'
             ],
             [
-                'name' => 'Order is picked up',
+                'name' => 'Order is being delivered',
                 'description' => 'The driver is delivering the order to the customer'
             ],
             [

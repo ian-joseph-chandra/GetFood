@@ -18,6 +18,7 @@ class Order extends Model
         'order_status_id',
         'customer_id',
         'driver_id',
+        'pick_up_key',
         'order_price',
         'delivery_price',
         'rating'

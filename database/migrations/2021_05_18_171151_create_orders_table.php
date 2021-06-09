@@ -23,7 +23,9 @@ class CreateOrdersTable extends Migration
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->unsignedBigInteger('driver_id')->nullable();
             $table->foreign('driver_id')->references('id')->on('drivers');
-            $table->unsignedInteger('total_price');
+            $table->unsignedinteger('pick_up_key')->nullable();
+            $table->unsignedInteger('order_price');
+            $table->unsignedInteger('deliver_price');
             $table->unsignedTinyInteger('rating')->nullable();
             $table->timestamps();
         });
