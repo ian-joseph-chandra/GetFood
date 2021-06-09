@@ -22,8 +22,8 @@ class RestaurantPageController extends Controller
         $selected = 1;
         $orders = Order::with('driver.user')->with('customer.user')->with('branch.restaurant')->with('order_status')->get();
 
-        // return view('restaurant.home', compact('restaurant', 'orders'));
-        return compact('restaurant', 'orders');
+        return view('restaurant.home', compact('restaurant', 'orders'));
+        // return compact('restaurant', 'orders');
     }
 
     public function menu_categories(Restaurant $restaurant)
