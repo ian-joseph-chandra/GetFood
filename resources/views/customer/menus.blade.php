@@ -35,27 +35,28 @@
         </div>
 
         @foreach($selected == null ? $menu_categories : $menu_category as $category)
-        <div class="card mt-3 mb-3">
-            <div class="card-header">{{$category->name}}</div>
+            <div class="card mt-3 mb-3">
+                <div class="card-header">{{$category->name}}</div>
 
-            <ul class="list-group list-group-flush">
-                @foreach($category->menus as $menu)
-                    <li class="list-group-item" onclick="window.location='/api/menus/{{$menu->id}}/carts/create'">
-                        <div class="row">
-                            <div class="ml-3">
-                                <img src="{{ asset($menu->image == null ?
+                <ul class="list-group list-group-flush">
+                    @foreach($category->menus as $menu)
+                        <li class="list-group-item"
+                            onclick="window.location='/api/carts/{{$branch->id}}/menus/{{$menu->id}}/cart_details/create'">
+                            <div class="row">
+                                <div class="ml-3">
+                                    <img src="{{ asset($menu->image == null ?
                                                     'images/logo-restaurant.jpg' : $menu->image) }}" class="logo">
-                            </div>
+                                </div>
 
-                            <div class="ml-3">
-                                <p class="card-text">{{$menu->name}}</p>
-                                <p class="card-text">{{$menu->price}}</p>
+                                <div class="ml-3">
+                                    <p class="card-text">{{$menu->name}}</p>
+                                    <p class="card-text">{{$menu->price}}</p>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         @endforeach
     </div>
 
@@ -65,9 +66,5 @@
                 '/customer/branches/{{$branch->id}}/menus' :
                 '/customer/branches/{{$branch->id}}/categories/' + document.getElementById('category_id').value + '/menus';
         })
-
-        function check_cart(){
-            {{}}
-        }
     </script>
 @endsection

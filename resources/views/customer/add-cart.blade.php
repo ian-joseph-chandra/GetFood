@@ -13,10 +13,11 @@
 
                 <div class="mb-3">
                     <label for="textAreaNotes" class="form-label">Notes</label>
-                    <textarea disabled class="form-control" id="textAreaNotes" rows="2" placeholder="optional notes"></textarea>
+                    <textarea disabled class="form-control" id="textAreaNotes" rows="2"
+                              placeholder="optional notes"></textarea>
                 </div>
 
-                <form action="" method="POST">
+                <form action="{{ route('carts.menus.cart_details.store', [$cart, $menu]) }}" method="POST">
                     @csrf
                     <label for="quantity">Quantity</label>
                     <br>

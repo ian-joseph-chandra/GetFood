@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\pages\CustomerPageController;
@@ -149,5 +150,8 @@ Route::prefix('api')->group(function () {
     Route::resource('branches.restaurants', RestaurantController::class)->shallow();
     Route::resource('restaurants.menu_categories', MenuCategoryController::class)->shallow();
     Route::resource('restaurants.menus', MenuController::class)->shallow();
-    Route::resource('menus.carts', CartController::class)->shallow();
+
+    //Route::get('/cart/{cart}')
+    Route::resource('branches.carts', CartController::class)->shallow();
+    Route::resource('carts.menus.cart_details', CartDetailController::class)->shallow();
 });

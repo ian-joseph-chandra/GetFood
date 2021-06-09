@@ -23,10 +23,9 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Menu $menu, Cart $cart)
+    public function create()
     {
-        return view('customer.add-cart', compact('menu', 'cart'));
-//        return compact('menu', 'cart');
+        //
     }
 
     /**
