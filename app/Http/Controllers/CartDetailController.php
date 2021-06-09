@@ -23,7 +23,6 @@ class CartDetailController extends Controller
      */
     public function index(Cart $cart)
     {
-        $cart = $cart->with('cart_details')->get();
         $customer = Customer::with('user')->findOrFail(1);
 
         $sub_total = 0;
@@ -31,8 +30,7 @@ class CartDetailController extends Controller
             $sub_total += $item->menu->price * $item->quantity;
         }
 
-//        return view('customer.cart-detail', compact('cart', 'customer', 'sub_total'));
-        return compact('cart', 'customer', 'sub_total');
+        return view('customer.cart-detail', compact('cart', 'customer', 'sub_total'));
     }
 
     /**
