@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Compound;
 
 class OrderController extends Controller
 {
@@ -33,9 +36,24 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Customer $customer, Cart $cart)
     {
-        //
+        $cart_details = $cart->cart_details()->get();
+        $order_price = 0;
+
+        foreach ($cart_details as $item) {
+            $order_price += $item->menu->price * $item->quantity;
+        }
+
+        $order = new Order([
+            'branch_id' => $cart->branch_id,
+            'order_status-id' => 1,
+            'customer_id' => $customer->id,
+            'order_price' => $order_price,
+            'delivery_price' => 40
+        ]);
+
+        return compact('cart', 'cart_details', 'order_price', 'order');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Cart;
 use App\Models\Menu;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Branch $branch)
     {
         //
     }

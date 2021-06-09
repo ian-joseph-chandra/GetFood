@@ -43,6 +43,7 @@
                         <li class="list-group-item"
                             onclick="window.location='/api/carts/{{$branch->id}}/menus/{{$menu->id}}/cart_details/create'">
                             <div class="row">
+
                                 <div class="ml-3">
                                     <img src="{{ asset($menu->image == null ?
                                                     'images/logo-restaurant.jpg' : $menu->image) }}" class="logo">

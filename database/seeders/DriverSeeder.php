@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DriverSeeder extends Seeder
 {
@@ -13,6 +14,11 @@ class DriverSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('drivers')->insert([
+            [
+                'user_id' => 2,
+                'plate_vehicle' => 'AB123'
+            ]
+        ]);
     }
 }

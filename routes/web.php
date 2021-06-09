@@ -5,6 +5,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\pages\CustomerPageController;
 use App\Http\Controllers\pages\RestaurantPageController;
 use App\Http\Controllers\RestaurantController;
@@ -39,8 +41,8 @@ Route::prefix('customer')->group(function () {
 
     Route::get('/branches/{branch}/categories/{menu_category}/menus', [CustomerPageController::class, 'menus_by_category']);
 
-    Route::get('/menus/{menu}/add-cart', function () {
-        return view('customer.add-cart');
+    Route::get('/menus/{menu}/add-cart-detail', function () {
+        return view('customer.add-cart-detail');
     });
 
     Route::get('/cart', function () {
@@ -143,7 +145,8 @@ Route::prefix('api')->group(function () {
         'restaurants' => RestaurantController::class,
         'branches' => BranchController::class,
         'menus' => MenuController::class,
-        'menu-categories' => MenuCategory::class
+        'menu-categories' => MenuCategory::class,
+        'cart_details' => CartController::class
     ]);
 
     Route::resource('restaurants.branches', BranchController::class)->shallow();
@@ -154,4 +157,7 @@ Route::prefix('api')->group(function () {
     //Route::get('/cart/{cart}')
     Route::resource('branches.carts', CartController::class)->shallow();
     Route::resource('carts.menus.cart_details', CartDetailController::class)->shallow();
+    Route::resource('carts.cart_details', CartDetailController::class)->shallow();
+    Route::resource('customers.carts.orders', OrderController::class)->shallow();
+    Route::resource('orders.order_details', OrderDetailController::class)->shallow();
 });

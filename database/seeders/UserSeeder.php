@@ -21,6 +21,12 @@ class UserSeeder extends Seeder
                 'email' => 'ian@gmail.com',
                 'password' => '123'
             ],
+            [
+                'name' => 'Joseph',
+                'phone_number' => '081616',
+                'email' => 'joseph@gmail.com',
+                'password' => '123'
+            ]
         ]);
     }
 }

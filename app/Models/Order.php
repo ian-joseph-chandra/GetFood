@@ -13,6 +13,16 @@ class Order extends Model
 
     protected $table = 'orders';
 
+    protected $fillable = [
+        'branch_id',
+        'order_status_id',
+        'customer_id',
+        'driver_id',
+        'order_price',
+        'delivery_price',
+        'rating'
+    ];
+
     public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class, 'branch_id');
