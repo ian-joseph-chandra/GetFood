@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RestaurantController;
+use App\Models\Branch;
 use App\Models\MenuCategory;
+use App\Models\Order;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +19,11 @@ class RestaurantPageController extends Controller
     public function home(Restaurant $restaurant)
     {
         $restaurant = (new RestaurantController)->show($restaurant);
+        $selected = 1;
+        $orders = Order::with('driver.user')->with('customer.user')->with('branch.restaurant')->with('order_status')->get();
 
-        //        $restaurant = Restaurant::with('branches')->find(1);
-
-        return view('restaurant.home', compact('restaurant'));
+        return view('restaurant.home', compact('restaurant', 'orders'));
+        // return compact('restaurant', 'orders');
     }
 
     public function menu_categories(Restaurant $restaurant)

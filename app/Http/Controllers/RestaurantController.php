@@ -49,7 +49,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        $restaurant = Restaurant::with('branches')->findOrFail($restaurant->id);
+        $restaurant = Restaurant::with('branches.orders')->findOrFail($restaurant->id);
 //
 //        $image = $restaurant->image;
 //        $response = Response::make($image->encode('png'));

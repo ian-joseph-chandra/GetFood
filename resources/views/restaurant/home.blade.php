@@ -41,27 +41,28 @@
 
         <h4>List Order <span class="badge bg-info text-white">1</span></h4>
 
-        <div class="card mt-1">
+        @foreach($orders as $order)
+        <div class="card mt-1 mb-2">
             <div class="card-header">
-                <p class="h5 float-left">#12345</p>
-                <p class="h5 float-right">12:30</p>
+                <p class="h5 float-left">Order ID: #{{$order->id}}</p>
+                <p class="h5 float-right">{{$order->create_at}}</p>
             </div>
 
             <div class="card-body">
                 <div class="row" style="cursor: pointer" onclick="window.location='/restaurant/orders'">
                     <div class="col-4">
                         <span><img src="{{ asset('images/user.png') }}"></span>
-                        <span class="card-text">Bambeng</span>
-                        <span class="badge badge-success badge-pill">5 ★</span>
+                        <span class="card-text">{{$order->customer->user->name}}</span>
+                        <span class="badge badge-success badge-pill">{{$order->rating}}</span>
                     </div>
 
                     <div class="col-4">
                         <span><img src="{{ asset('images/delivery.png') }}"></span>
-                        <span class="card-text">Twinkie</span>
+                        <span class="card-text">{{$order->driver->user->name}}</span>
                     </div>
 
                     <div class="col-2">
-                        <span class="h6 align-middle">Picked Up</span>
+                        <span class="h6 align-middle">{{$order->order_status->name}}</span>
                     </div>
 
                     <div class="col-2">
@@ -72,5 +73,6 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 @endsection
