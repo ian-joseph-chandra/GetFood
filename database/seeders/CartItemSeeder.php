@@ -14,22 +14,22 @@ class CartItemSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cart_details')->insert([
-            [
-                'menu_id' => 1,
-                'cart_id' => 1,
-                'quantity' => 2,
-            ],
-            [
-                'menu_id' => 2,
-                'cart_id' => 1,
-                'quantity' => 1,
-            ],
-            [
-                'menu_id' => 3,
-                'cart_id' => 1,
-                'quantity' => 3,
-            ]
-        ]);
+//        DB::table('cart_details')->insert([
+//            [
+//                'menu_id' => 1,
+//                'cart_id' => 1,
+//                'quantity' => 2,
+//            ],
+//            [
+//                'menu_id' => 2,
+//                'cart_id' => 1,
+//                'quantity' => 1,
+//            ],
+//            [
+//                'menu_id' => 3,
+//                'cart_id' => 1,
+//                'quantity' => 3,
+//            ]
+//        ]);
     }
 }

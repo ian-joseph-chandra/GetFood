@@ -6,7 +6,9 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-1">
-                        <img src="{{ asset('$restaurant->image') }}" class="logo rounded-circle">
+                        <img src="{{ asset($restaurant->image == null ?
+                                                    'images/logo-restaurant.jpg' : $restaurant->image) }}"
+                             class="logo rounded-circle">
                     </div>
 
                     <div class="col-8">
@@ -39,40 +41,42 @@
             </div>
         </div>
 
-        <h4>List Order <span class="badge bg-info text-white">1</span></h4>
+        <h4>List Order <span class="badge bg-info text-white">{{count($orders)}}</span></h4>
 
         @foreach($orders as $order)
-        <div class="card mt-1 mb-2">
-            <div class="card-header">
-                <p class="h5 float-left">Order ID: #{{$order->id}}</p>
-                <p class="h5 float-right">{{$order->create_at}}</p>
-            </div>
+            <div class="card mt-1 mb-2">
+                <div class="card-header">
+                    <p class="h5 float-left">Order ID: #{{$order->id}}</p>
+                    <p class="h5 float-right">{{$order->create_at}}</p>
+                </div>
 
-            <div class="card-body">
-                <div class="row" style="cursor: pointer" onclick="window.location='/restaurant/orders'">
-                    <div class="col-4">
-                        <span><img src="{{ asset('images/user.png') }}"></span>
-                        <span class="card-text">{{$order->customer->user->name}}</span>
-                        <span class="badge badge-success badge-pill">{{$order->rating}}</span>
-                    </div>
+                <div class="card-body">
+                    <div class="row" style="cursor: pointer"
+                         onclick="window.location='/restaurant/{{$restaurant->id}}/orders/{{$order->id}}/order-details'">
+                        <div class="col-4">
+                            <span><img src="{{ asset('images/user.png') }}"></span>
+                            <span class="card-text">{{$order->customer->user->name}}</span>
+                            <span class="badge badge-success badge-pill">{{$order->rating}}</span>
+                        </div>
 
-                    <div class="col-4">
-                        <span><img src="{{ asset('images/delivery.png') }}"></span>
-                        <span class="card-text">{{$order->driver->user->name}}</span>
-                    </div>
+                        <div class="col-4">
+                            <span><img src="{{ asset('images/delivery.png') }}"></span>
+{{--                            <span class="card-text">{{$order->driver->user->name}}</span>--}}
+                            <span class="card-text">Joseph</span>
+                        </div>
 
-                    <div class="col-2">
-                        <span class="h6 align-middle">{{$order->order_status->name}}</span>
-                    </div>
+                        <div class="col-2">
+                            <span class="h6 align-middle">{{$order->order_status->name}}</span>
+                        </div>
 
-                    <div class="col-2">
-                        <a class="float-right">
-                            <i class="fa fa-lg fa-chevron-right"></i>
-                        </a>
+                        <div class="col-2">
+                            <a class="float-right">
+                                <i class="fa fa-lg fa-chevron-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
 @endsection

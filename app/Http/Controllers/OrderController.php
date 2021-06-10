@@ -10,27 +10,26 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Compound;
+use Illuminate\Http\Response;
 
 class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
         $orders = Order::with('branch.restaurant')->with('customer.user')->get();
 
         return view('driver.home', compact('orders'));
-        //return compact('orders');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -78,17 +77,14 @@ class OrderController extends Controller
             $cart_detail->forceDelete();
         }
 
-        // Delete cart items after order items created
-        $cart->forceDelete();
-
-        return view('customer.order-status', compact('cart', /*'cart_details',*/ 'order_price', 'order'));
+        return view('customer.order-status', compact('cart', 'order_price', 'order'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return Response
      */
     public function show(Order $order)
     {
@@ -98,8 +94,8 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return Response
      */
     public function edit(Order $order)
     {
@@ -110,8 +106,8 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return Response
      */
     public function update(Request $request, Order $order)
     {
@@ -121,8 +117,8 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return Response
      */
     public function destroy(Order $order)
     {

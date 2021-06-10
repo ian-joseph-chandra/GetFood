@@ -14,10 +14,10 @@
 <body>
 <div class="device">
     <nav class="navbar navbar-light bg-light mb-5 fixed-top">
-        <a class="arrow left" href="#"></a>
-        <span class="navbar-brand">Get Food</span>
+{{--        <a class="arrow left" href="#"></a>--}}
+        <a class="navbar-brand" href="{{route('customer.home')}}">Get Food</a>
 
-        <a class="fa fa-shopping-basket" role="button" style="font-size: 20px;" aria-hidden="true"
+        <a class="fa fa-shopping-basket" role="button" style="font-size: 20px; color:inherit" aria-hidden="true"
            href="{{ route('carts.cart_details.index', 1) }}"></a>
     </nav>
     @yield('content')

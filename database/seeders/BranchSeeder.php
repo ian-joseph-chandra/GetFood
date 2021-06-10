@@ -18,7 +18,7 @@ class BranchSeeder extends Seeder
             [
                 'restaurant_id' => 1,
                 'location' => 'GongGuan',
-                'rating_average' => 4.8,
+                'rating_average' => 4.9,
                 'rating_quantity' => 1
             ],
             [
@@ -42,7 +42,7 @@ class BranchSeeder extends Seeder
             [
                 'restaurant_id' => 3,
                 'location' => 'Shida',
-                'rating_average' => 4.9,
+                'rating_average' => 4.8,
                 'rating_quantity' => 1
             ],
             [
