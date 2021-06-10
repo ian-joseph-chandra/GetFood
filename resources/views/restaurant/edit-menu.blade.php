@@ -5,58 +5,58 @@
         <div class="row justify-content-center">
             <div class="col-md-8 mt-5 mb-5">
                 <div class="card">
-                    <h4 class="card-text text-center font-weight-bold mt-3">New Menu</h4>
+                    <h4 class="card-text text-center font-weight-bold mt-3">Edit Menu</h4>
 
                     <div class="card-body">
-                        <form action="{{route('restaurants.menus.store', $restaurant->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('menus.update', $menu)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
-
+                            @method('PUT')
                             <div class="form-group row">
-                                <label for="txtName" class="col-md-4 col-form-label text-md-right">Name</label>
-
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="name" id="txtName">
+                                    <input type="text" class="form-control" name="name" id="name"
+                                           value="{{$menu->name}}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="category" class="col-md-4 col-form-label text-md-right">Category</label>
-
+                                <label for="category_id" class="col-md-4 col-form-label text-md-right">Category</label>
                                 <div class="col-md-6">
-                                    <select placeholder="Select Category" class="form-control" name="category_id"
-                                            id="categorySelection">
+                                    <select class="form-control" name="category_id" id="category_id">
                                         <option value="">Select Category</option>
 
-                                        @foreach($menu_categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @foreach($restaurant->menu_categories as $category)
+                                            <option
+                                                value="{{$category->id}}"
+                                                {{$menu->category_id== $category->id ? 'selected' : ''}}>{{$category->name}}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="txtDescription"
+                                <label for="description"
                                        class="col-md-4 col-form-label text-md-right">Description</label>
-
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="description" id="txtDescription">
+                                    <input type="text" class="form-control" name="description" id="description"
+                                           value="{{$menu->description}}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="txtPrice" class="col-md-4 col-form-label text-md-right">Price</label>
-
+                                <label for="price" class="col-md-4 col-form-label text-md-right">Price</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="price" id="txtPrice">
+                                    <input type="text" class="form-control" name="price" id="price"
+                                           value="{{$menu->price}}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="txtChooseFile" class="col-md-4 col-form-label text-md-right">Choose
-                                    File</label>
-
+                                <label for="image" class="col-md-4 col-form-label text-md-right">Choose File</label>
                                 <div class="col-md-6">
-                                    <input type="file" class="form-control-file-center" name="image" id="txtChooseFile">
+                                    <input type="file" class="form-control-file-center" name="image" id="image"
+                                           value="{{$menu->image}}">
                                 </div>
                             </div>
 

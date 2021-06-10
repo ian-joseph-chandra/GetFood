@@ -35,7 +35,7 @@ Route::prefix('customer')->group(function () {
         return redirect('/customer/home');
     });
 
-    Route::get('/home', [CustomerPageController::class, 'home']);
+    Route::get('/home', [CustomerPageController::class, 'home'])->name('customer.home');
 
     Route::get('/branches/{branch}/menus', [CustomerPageController::class, 'menus']);
 
@@ -60,13 +60,6 @@ Route::prefix('customer')->group(function () {
     Route::get('/register', function () {
         return view('customer.register');
     });
-
-    // Route::get('/login', function () {
-    //     return view('customer.login');
-    // });
-
-    //     Route::get('login', [AuthController::class, 'index'])->name('login');
-    // Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 
     Route::get('/login', [CustomerPageController::class, 'getLogin'])->name('login');
 
@@ -112,22 +105,19 @@ Route::prefix('restaurant/{restaurant}')->group(function () {
 
     Route::post('/login', [RestaurantPageController::class, 'login']);
 
-    Route::get('/orders', function () {
-        return view('restaurant.order-detail');
-    });
+    Route::get('/orders/{order}/order-details', [RestaurantPageController::class, 'order_details']);
 
-    Route::get('/categories/{menu_category}/menus', [RestaurantPageController::class, 'menus_by_category']);
-
-    Route::get('/menus', [RestaurantPageController::class, 'menus']);
-
+    Route::get('/menus', [MenuController::class, 'restaurant_index'])->name('restaurant.menus.index');
+    Route::get('/menu_categories/{menu_category}/menus', [MenuController::class, 'restaurant_partial'])
+        ->name('restaurant.menus.partial');
     Route::get('/add-menu', [RestaurantPageController::class, 'add_menu']);
+    Route::get('/menus/{menu}/edit', [MenuController::class, 'edit'])->name('restaurant.menus.edit');
+
     Route::get('/menu-categories', [RestaurantPageController::class, 'menu_categories'])->name('restaurant.menu_categories');
     Route::get('/menu-categories/{menu_category}/edit',
         [RestaurantPageController::class, 'menu_categories_edit'])->name('restaurant.menu_categories.edit');
 
-
     Route::get('/add-menu-category', [RestaurantPageController::class, 'add_menu_category']);
-
 
     Route::get('/add-branch', [RestaurantPageController::class, 'add_branch']);
 
@@ -136,14 +126,13 @@ Route::prefix('restaurant/{restaurant}')->group(function () {
     });
 });
 
-
 // Route for API services
 Route::prefix('api')->group(function () {
     Route::resources([
         'restaurants' => RestaurantController::class,
         'branches' => BranchController::class,
         'menus' => MenuController::class,
-        'menu-categories' => MenuCategory::class,
+        'menu-categories' => MenuCategoryController::class,
         'cart_details' => CartController::class,
         'orders' => OrderController::class
     ]);
@@ -153,7 +142,6 @@ Route::prefix('api')->group(function () {
     Route::resource('restaurants.menu_categories', MenuCategoryController::class)->shallow();
     Route::resource('restaurants.menus', MenuController::class)->shallow();
 
-    //Route::get('/cart/{cart}')
     Route::resource('branches.carts', CartController::class)->shallow();
     Route::resource('carts.menus.cart_details', CartDetailController::class)->shallow();
     Route::resource('carts.cart_details', CartDetailController::class)->shallow();

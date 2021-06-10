@@ -49,7 +49,7 @@ class BranchController extends Controller
         ]);
         $branch->save();
 
-        return redirect('/restaurant/home/' . $restaurant->id)->with('flash_message_success', 'Successfully created a new branch!');
+        return redirect(route('restaurant.home', 1))->with('flash_message_success', 'Successfully created a new branch!');
     }
 
     /**

@@ -15,7 +15,7 @@
 <body>
 <div class="device">
     <nav class="navbar navbar-expand-lg  navbar-dark bg-info mb-3">
-        <a class="navbar-brand mb-0 h1" href="{{ url('/restaurant/'.$restaurant->id).'/home' }}">Get Food</a>
+        <a class="navbar-brand mb-0 h1" href="{{ route('restaurant.home', 1) }}">Get Food</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url('/restaurant/'.$restaurant->id.'/menus' )}}">Menu</a>
+                    <a class="nav-link text-white" href="{{route('restaurant.menus.index', $restaurant)}}">Menu</a>
                 </li>
 
                 <li class="nav-item">

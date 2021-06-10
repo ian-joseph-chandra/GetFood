@@ -10,20 +10,13 @@
                     </div>
 
                     <div class="col-md-3 mt-1">
-                        <select placeholder="Select Category" class="form-control" name="category_id"
-                                id="category_id">
-                            @if($selected == null)
-                                <option value="" selected>All menus</option>
-                            @else
-                                <option value="">All menus</option>
-                            @endif
+                        <select class="form-control" name="category_id" id="category_id">
+                            <option value="" {{ ($selected == null) ? 'selected' : '' }}>All menus</option>
 
-                            @foreach($menu_categories as $category)
-                                    @if($selected == $category->id)
-                                        <option value="{{$category->id}}" selected>{{$category->name}}</option>
-                                    @else
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endif
+                            @foreach($restaurant->menu_categories as $category)
+                                <option value="{{$category->id}}" {{ ($selected == $category->id) ? 'selected' : ''}}>
+                                    {{$category->name}}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -50,28 +43,33 @@
                     </thead>
 
                     <tbody>
-                    @foreach($menus as $menu)
-                        <tr>
-                            <td><img src="{{ asset( $menu->image == null ?
-                                                    'images/logo-restaurant.jpg' : $menu->image) }}" class="logo"></td>
-                            <td>{{$menu->name}}</td>
-                            <td>{{$menu->menu_category->name}}</td>
-                            <td>{{$menu->description}}</td>
-                            <td>{{$menu->price}}</td>
-                            <td class="row">
-                                <div class="col-4 float-left">
-                                    <a href="" class="btn btn-sm btn-primary" onclick="">Edit</a>
-                                </div>
 
-                                <div class="col-8">
-                                    <form method="POST" action="{{url('/api/menus/'.$menu->id)}}">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button class="btn btn-sm btn-danger" type="submit">Delete</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                    @foreach( ($selected == null) ? $restaurant->menu_categories :
+                        $restaurant->menu_categories()->with('menus')->where('id', $selected)->get() as $category)
+                        @foreach($category->menus as $menu)
+                            <tr>
+                                <td><img src="{{ asset( $menu->image == null ?
+                                                    'images/logo-restaurant.jpg' : $menu->image) }}" class="logo" alt="{{$menu->image}}"></td>
+                                <td>{{$menu->name}}</td>
+                                <td>{{$category->name}}</td>
+                                <td>{{$menu->description}}</td>
+                                <td>{{$menu->price}}</td>
+                                <td class="row">
+                                    <div class="col-4 float-left">
+                                        <a href="{{route('restaurant.menus.edit', [$restaurant, $menu])}}"
+                                           class="btn btn-sm btn-primary">Edit</a>
+                                    </div>
+
+                                    <div class="col-8">
+                                        <form method="POST" action="{{route('menus.destroy', $menu)}}">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     @endforeach
                     </tbody>
                 </table>
@@ -83,7 +81,7 @@
         document.getElementById('category_id').addEventListener('change', function () {
             window.location = document.getElementById('category_id').value === '' ?
                 '/restaurant/{{$restaurant->id}}/menus' :
-                '/restaurant/{{$restaurant->id}}/categories/' + document.getElementById('category_id').value + '/menus';
+                '/restaurant/{{$restaurant->id}}/menu_categories/' + document.getElementById('category_id').value + '/menus';
         })
     </script>
 @endsection
